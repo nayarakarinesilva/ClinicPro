@@ -1,16 +1,111 @@
-# React + Vite
+# 🏥 ClinicPro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ClinicPro é uma aplicação web para gerenciamento de clínicas e consultórios médicos, desenvolvida com React, Vite e Material UI.
 
-Currently, two official plugins are available:
+O objetivo do projeto é centralizar o gerenciamento de pacientes, médicos, consultas e informações clínicas em uma interface moderna, intuitiva e responsiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Funcionalidades Planejadas
 
-## React Compiler
+### Autenticação
+- Login de usuários
+- Controle de acesso às páginas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Dashboard
+- Indicadores de desempenho
+- Consultas agendadas
+- Médicos ativos
+- Resumo das atividades da clínica
 
-## Expanding the ESLint configuration
+### Gestão de Pacientes
+- Cadastro de pacientes
+- Edição e exclusão de registros
+- Pesquisa e filtros
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Gestão de Médicos
+- Cadastro de médicos
+- Especialidades
+- Controle de disponibilidade
+
+### Gestão de Consultas
+- Agendamento de consultas
+- Visualização da agenda
+- Controle de horários
+
+### Prontuários
+- Histórico de atendimentos
+- Informações médicas dos pacientes
+
+### Financeiro
+- Controle de faturamento
+- Relatórios financeiros
+
+## 🚀 Tecnologias Utilizadas
+
+- React
+- Vite
+- Material UI (MUI)
+- JavaScript
+- ESLint
+
+## 📂 Estrutura do Projeto
+
+```text
+src/
+├── assets/
+├── components/
+├── pages/
+├── styles/
+├── App.jsx
+└── main.jsx
+
+public/
+└── logo.svg
+```
+
+## ⚙️ Como Executar o Projeto
+
+Clone o repositório:
+
+```bash
+git clone <url-do-repositorio>
+```
+
+Acesse a pasta do projeto:
+
+```bash
+cd clinicpro
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Execute o projeto:
+
+```bash
+npm run dev
+```
+
+A aplicação estará disponível em:
+
+```text
+http://localhost:5173
+```
+
+## 🎨 Design
+
+O projeto segue uma identidade visual moderna inspirada em sistemas SaaS da área da saúde, priorizando:
+
+- Usabilidade
+- Acessibilidade
+- Responsividade
+- Organização visual
+- Experiência do usuário
+
+## 📌 Status do Projeto
+
+🚧 Em desenvolvimento
+
+Atualmente o projeto está na fase de estruturação inicial e prototipação das telas.
