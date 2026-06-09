@@ -10,6 +10,7 @@ const SidebarHeader = () => {
         flexDirection: "row",
         alignItems: "center",
         gap: "1rem",
+        marginBottom:"1.5rem"
       }}
     >
       <Box>

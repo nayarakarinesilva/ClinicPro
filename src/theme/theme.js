@@ -14,16 +14,13 @@ export const theme = createTheme({
     background: {
       default: "#FFFFFF",
       paper: "#F8F9FF",
-      active: "#D5E4F8",
-    },
-    border: {
-      light: "#C3C6D7",
-    },
-    iconBackground: {
-      primary: "#D5E3FD",
+      primary: "#D5E4F8",
       secondary: "#FFDBCD",
       muted: "#516070",
       active: "#DCFCE7",
+    },
+    border: {
+      light: "#C3C6D7",
     },
     icon: {
       primary: "#004AC6",
