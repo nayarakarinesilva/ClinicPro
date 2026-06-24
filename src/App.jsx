@@ -11,6 +11,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { PrivateRoute } from "./routes/PrivateRoute";
 import Login from "./components/Login/Login";
 import Layout from "./components/Layout/Layout";
+import Register from "./components/Register/Register";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
             <Route element={<PrivateRoute />}>
               <Route element={<Layout />}>
