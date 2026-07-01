@@ -1,7 +1,20 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React from "react";
+import { useRegister } from "./hooks/useRegister";
+import Input from "../../ui/Input";
 
 const Register = () => {
+  const {
+    handleChange,
+    form,
+    setTouched,
+    touched,
+    errorMessages,
+    errors,
+    handleRegister,
+    error,
+  } = useRegister();
+
   return (
     <Box
       sx={{
@@ -33,33 +46,53 @@ const Register = () => {
             gap: 3,
           }}
         >
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
+          <Input
             label="Nome"
-            // value={email}
-            // onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            placeholder={"Nome"}
+            name={"name"}
+            value={form.name}
+            onChange={handleChange}
+            onBlur={() => setTouched((prev) => ({ ...prev, name: true }))}
+            msgError={touched.name && errors.name ? errorMessages.name : ""}
           />
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
+          <Input
             label="E-mail"
-            // value={email}
-            // onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder={"E-mail"}
+            name={"email"}
+            value={form.email}
+            onChange={handleChange}
+            onBlur={() => setTouched((prev) => ({ ...prev, email: true }))}
+            msgError={touched.email && errors.email ? errorMessages.email : ""}
           />
-          <TextField
-            id="outlined-basic"
-            label="Confirme o e-mail"
-            variant="outlined"
-            // value={password}
-            // onChange={(e) => setPassword(e.target.value)}
+          <Input
+            label="Confirmar e-mail"
+            type="email"
+            placeholder={"Cofirme e-mail"}
+            name={"confirmEmail"}
+            value={form.confirmEmail}
+            onChange={handleChange}
+            onBlur={() =>
+              setTouched((prev) => ({ ...prev, confirmEmail: true }))
+            }
+            msgError={
+              touched.confirmEmail && errors.confirmEmail
+                ? errorMessages.confirmEmail
+                : ""
+            }
           />
-          <TextField
-            id="outlined-basic"
+          <Input
             label="Senha"
-            variant="outlined"
-            // value={password}
-            // onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder={"Senha"}
+            name={"password"}
+            value={form.password}
+            onChange={handleChange}
+            onBlur={() => setTouched((prev) => ({ ...prev, password: true }))}
+            msgError={
+              touched.password && errors.password ? errorMessages.password : ""
+            }
           />
         </Box>
 
@@ -72,8 +105,9 @@ const Register = () => {
           }}
         >
           <Button
+            type="submit"
             variant="contained"
-            // onClick={handleLogin}
+            onClick={handleRegister}
             sx={{
               maxWidth: "250px",
               textTransform: "uppercase",

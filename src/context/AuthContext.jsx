@@ -23,24 +23,41 @@ export const AuthProvider = ({ children }) => {
 
   const login = (email, password) => {
     const userStorage = JSON.parse(localStorage.getItem("user_db")) || [];
-    
-    const hasUser = userStorage?.filter((user) => user.email === email);
 
-    if (!hasUser?.length) {
-      return { success: false, message: "Usuário não cadastrado" };
+    console.log("USER STORAGE:", userStorage);
+    console.log("EMAIL DIGITADO:", email);
+    const hasUser = userStorage.find((user) => user.email === email);
+    console.log("USUÁRIO ENCONTRADO:", hasUser);
+
+    if (!hasUser) {
+      return {
+        success: false,
+        message: "Usuário não cadastrado",
+      };
     }
 
-    if (hasUser?.password !== password) {
-      return { success: false, message: "E-mail ou senha incorretos" };
+    if (hasUser.password !== password) {
+      return {
+        success: false,
+        message: "E-mail ou senha incorretos",
+      };
     }
 
     const token = Math.random().toString(36).substring(2);
 
-    localStorage.setItem("user_token", JSON.stringify({ email, token }));
+    localStorage.setItem(
+      "user_token",
+      JSON.stringify({
+        email,
+        token,
+      }),
+    );
 
-    setUser(hasUser[0]);
+    setUser(hasUser);
 
-    return { success: true };
+    return {
+      success: true,
+    };
   };
 
   const logout = () => {
@@ -48,26 +65,27 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user_token");
   };
 
-  const register = (email, password, name) => {
-    const userStorage = JSON.parse(localStorage.getItem("user_db")) || [];
+  const register = (name, email, password) => {
+    const userStorage = JSON.parse(localStorage.getItem("user_db"));
 
     const hasUser = userStorage?.filter((user) => user.email === email);
 
     if (hasUser?.length) {
       return "Já tem uma conta com esse e-mail cadastrada.";
     }
-
     let newUser;
-
+    //Caso já tenha ele junta
     if (userStorage) {
       newUser = [...userStorage, { email, password, name }];
     } else {
       newUser = [{ email, password, name }];
     }
-
-    localStorage.setItem("userdb", JSON.stringify(newUser));
+    // console.log("Salvando:", newUser);
+    localStorage.setItem("user_db", JSON.stringify(newUser));
     return;
   };
+
+  console.log("USER STATE:", user);
 
   return (
     <AuthContext.Provider
