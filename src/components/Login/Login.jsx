@@ -23,18 +23,35 @@ const Login = () => {
     }
     setError(result.message);
   };
-  
+
   return (
-    <>
-      <Box>
-        <Typography variant="h5">Bem-vindo ao ClinicPro</Typography>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+        margin: 0,
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+        }}
+      >
+        <Typography variant="h5" sx={{ textAlign: "center" }}>
+          Bem-vindo ao ClinicPro
+        </Typography>
         <Typography>Acesse sua conta para gerenciar sua clínica</Typography>
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             maxWidth: "500px",
-            gap: "30px",
+            gap: 2,
           }}
         >
           <TextField
@@ -52,9 +69,26 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Box>
-        <Button variant="contained" onClick={handleLogin}>
-          Entrar na Plataforma
-        </Button>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "20px",
+          }}
+        >
+          <Button
+            variant="contained"
+            onClick={handleLogin}
+            sx={{
+              maxWidth: "250px",
+              textTransform: "uppercase",
+              fontWeight: 600,
+            }}
+          >
+            Entrar na Plataforma
+          </Button>
+        </Box>
       </Box>
       <Box sx={{ marginTop: "30px", textAlign: "center" }}>
         <Typography
@@ -69,7 +103,7 @@ const Login = () => {
           <Link
             to="/login"
             style={{
-              color: "#7C3AED",
+              color: "#1f1cca",
               fontWeight: 500,
             }}
             to="/register"
@@ -78,7 +112,7 @@ const Login = () => {
           </Link>
         </Typography>
       </Box>
-    </>
+    </Box>
   );
 };
 
