@@ -18,7 +18,7 @@ const Sidebar = () => {
       <SidebarItem
         icon={DashboardIcon}
         text={"Dashboard"}
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/dashboard")}
       />
       <SidebarItem
         icon={PermIdentityOutlinedIcon}

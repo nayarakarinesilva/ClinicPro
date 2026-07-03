@@ -22,12 +22,11 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (email, password) => {
+    //Pega todos os usuários cadastrados no localStorage
     const userStorage = JSON.parse(localStorage.getItem("user_db")) || [];
 
-    console.log("USER STORAGE:", userStorage);
-    console.log("EMAIL DIGITADO:", email);
+    //Verifica se usuários já foi cadastrado
     const hasUser = userStorage.find((user) => user.email === email);
-    console.log("USUÁRIO ENCONTRADO:", hasUser);
 
     if (!hasUser) {
       return {
@@ -74,18 +73,17 @@ export const AuthProvider = ({ children }) => {
       return "Já tem uma conta com esse e-mail cadastrada.";
     }
     let newUser;
-    //Caso já tenha ele junta
     if (userStorage) {
+      //Caso já tenha ele junta
       newUser = [...userStorage, { email, password, name }];
     } else {
+      //Se não tiver cadastro ele salva
       newUser = [{ email, password, name }];
     }
-    // console.log("Salvando:", newUser);
+    
     localStorage.setItem("user_db", JSON.stringify(newUser));
     return;
   };
-
-  console.log("USER STATE:", user);
 
   return (
     <AuthContext.Provider
