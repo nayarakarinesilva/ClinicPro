@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
-import loginImage from "../../../assets/login.svg";
+import loginImage from "../../../assets/loginImage.svg";
 
 const LoginImage = () => {
   return (
@@ -10,7 +10,6 @@ const LoginImage = () => {
         display: { xs: "none", md: "flex" },
         justifyContent: "flex-start",
         alignItems: "center",
-        minHeight: "100vh",
       }}
     >
       <Box
@@ -19,7 +18,8 @@ const LoginImage = () => {
         sx={{
           width: "100%",
           maxWidth: 900,
-          height: 800,
+          maxHeight: "80vh",
+          height: "auto",
           objectFit: "contain",
           ml: -4,
         }}

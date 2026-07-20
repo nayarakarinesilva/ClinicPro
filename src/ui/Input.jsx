@@ -7,7 +7,8 @@ const Input = ({ type, placeholder, value, onChange, label, onBlur, name, msgErr
       <Typography
         sx={{
           color: "#004AC6",
-          fontWeight: 500,
+          fontWeight: 600,
+          fontSize:"14px"
         }}
       >
         {label}

@@ -21,30 +21,28 @@ const LoginForm = () => {
     >
       <Box
         sx={{
+          height: "550px",
           width: "100%",
           maxWidth: 420,
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
           gap: 2,
+          backgroundColor: "#fff",
+          padding: "40px",
+          borderRadius: "12px",
+          border: "solid 1px #d5d8e9",
+          boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.08)",
         }}
       >
-        <Box>
-          <Box
-            component="img"
-            src={logo}
-            alt="Login illustration"
-            sx={{
-              width: "40px",
-              height: "auto",
-              objectFit: "contain",
-            }}
-          />
-          <Typography variant="h4" fontWeight={600}>
-            Bem-vindo ao ClinicPro
+        <Box sx={{ color: "#434654" }}>
+          <Typography sx={{ fontSize: "28px", fontWeight: 700 }}>
+            Entrar no Sistema
           </Typography>
 
           <Typography color="text.secondary">
-            Acesse sua conta para gerenciar sua clínica
+            Acesse seu painel administrativo
           </Typography>
         </Box>
 
