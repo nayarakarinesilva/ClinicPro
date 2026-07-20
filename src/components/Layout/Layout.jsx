@@ -1,11 +1,27 @@
+import { Outlet, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import Sidebar from "../sidebar/Sidebar";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 const Layout = () => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
   return (
     <Box sx={{ display: "grid", gridTemplateColumns: "1fr 8fr" }}>
       <Sidebar />
-      <Box>Renderizar as abas do menu</Box>
+      <Box sx={{ p: 3 }}>
+        <Button
+          onClick={() => {
+            logout();
+            navigate("/login");
+          }}
+        >
+          Sair
+        </Button>
+
+        {/* Renderiza a página selecionada no menu */}
+        <Outlet />
+      </Box>
     </Box>
   );
 };

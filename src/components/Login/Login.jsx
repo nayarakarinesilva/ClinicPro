@@ -1,51 +1,37 @@
-import { Box, Typography, TextField, Button } from "@mui/material";
-import React, { useState } from "react";
-import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Box, Typography } from "@mui/material";
+
+import LoginImage from "./components/LoginImage";
+import LoginForm from "./components/LoginForm";
+import LoginHeader from "./components/LoginHeader";
+import LoginFooter from "./components/LoginFooter";
 
 const Login = () => {
-  const { login } = useAuth();
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const handleLogin = () => {
-    const sucess = login(email, password);
-    if (sucess) {
-      navigate("/dashboard");
-    } else {
-      alert("Email ou senha inválidos");
-    }
-  };
   return (
-    <Box>
-      <Typography variant="h5">Bem-vindo ao ClinicPro</Typography>
-      <Typography>Acesse sua conta para gerenciar sua clínica</Typography>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+      }}
+    >
+      <LoginHeader />
+
       <Box
+        component="main"
         sx={{
+          flex: 1,
           display: "flex",
-          flexDirection: "column",
-          maxWidth: "500px",
-          gap: "30px",
+          alignItems: "center",
+          backgroundColor: "#f3f4fd",
         }}
       >
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          label="E-mail corporativo"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Senha"
-          variant="outlined"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <LoginImage />
+
+        <LoginForm />
       </Box>
-      <Button variant="contained" onClick={handleLogin}>
-        Entrar na Plataforma
-      </Button>
+
+      <LoginFooter />
     </Box>
   );
 };
