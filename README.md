@@ -1,111 +1,119 @@
 # 🏥 ClinicPro
 
-ClinicPro é uma aplicação web para gerenciamento de clínicas e consultórios médicos, desenvolvida com React, Vite e Material UI.
+O **ClinicPro** é uma aplicação web para gerenciamento de clínicas e consultórios médicos, desenvolvido com **React**, **Vite** e **Material UI**.
 
 O objetivo do projeto é centralizar o gerenciamento de pacientes, médicos, consultas e informações clínicas em uma interface moderna, intuitiva e responsiva.
 
-## ✨ Funcionalidades Planejadas
+> 🚧 Projeto em desenvolvimento.
 
-### Autenticação
-- Login de usuários
-- Controle de acesso às páginas
+---
 
-### Dashboard
-- Indicadores de desempenho
-- Consultas agendadas
-- Médicos ativos
-- Resumo das atividades da clínica
+## ✨ Funcionalidades
 
-### Gestão de Pacientes
-- Cadastro de pacientes
-- Edição e exclusão de registros
-- Pesquisa e filtros
+- 🔐 Autenticação de usuários
+- 📊 Dashboard
+- 👥 Gestão de Pacientes
+- 👨‍⚕️ Gestão de Médicos
+- 📅 Gestão de Consultas
+- 📋 Prontuários
+- 💰 Controle Financeiro
 
-### Gestão de Médicos
-- Cadastro de médicos
-- Especialidades
-- Controle de disponibilidade
+---
 
-### Gestão de Consultas
-- Agendamento de consultas
-- Visualização da agenda
-- Controle de horários
+## 🚀 Tecnologias
 
-### Prontuários
-- Histórico de atendimentos
-- Informações médicas dos pacientes
-
-### Financeiro
-- Controle de faturamento
-- Relatórios financeiros
-
-## 🚀 Tecnologias Utilizadas
+### Front-end
 
 - React
 - Vite
-- Material UI (MUI)
+- Material UI
+- React Router
 - JavaScript
 - ESLint
 
-## 📂 Estrutura do Projeto
+### Back-end (Planejado)
+
+- Node.js
+- Express
+- Banco de Dados Relacional
+
+---
+
+## 📁 Estrutura do Projeto
+
+O projeto utiliza uma organização baseada em módulos (Feature-Based Structure), facilitando a manutenção e a evolução da aplicação.
 
 ```text
 src/
+├── modules/
+├── shared/
+├── ui/
+├── context/
+├── routes/
+├── theme/
 ├── assets/
-├── components/
-├── pages/
-├── styles/
 ├── App.jsx
 └── main.jsx
-
-public/
-└── logo.svg
 ```
 
-## ⚙️ Como Executar o Projeto
+---
 
-Clone o repositório:
+## ⚙️ Como executar
 
 ```bash
 git clone https://github.com/nayarakarinesilva/ClinicPro.git
-```
 
-Acesse a pasta do projeto:
+cd ClinicPro
 
-```bash
-cd clinicpro
-```
-
-Instale as dependências:
-
-```bash
 npm install
-```
 
-Execute o projeto:
-
-```bash
 npm run dev
 ```
 
-A aplicação estará disponível em:
+---
 
-```text
-http://localhost:5173
-```
+## 📚 Documentação
 
-## 🎨 Design
+A documentação completa do projeto está disponível na Wiki.
 
-O projeto segue uma identidade visual moderna inspirada em sistemas SaaS da área da saúde, priorizando:
+Atualmente a documentação contempla:
 
-- Usabilidade
-- Acessibilidade
-- Responsividade
-- Organização visual
-- Experiência do usuário
+- 📋 Requisitos Funcionais
+- 📋 Requisitos Não Funcionais
+- 📝 Casos de Uso
+- 🧩 Modelagem de Domínio
+- 🏗 Arquitetura
+- 📂 Estrutura de Pastas
+- 📊 Diagrama de Componentes
+- 🛣 Roadmap
+- 📜 Changelog
+- 
+---
 
-## 📌 Status do Projeto
+## 🎯 Objetivos do Projeto
 
-🚧 Em desenvolvimento
+Este projeto foi criado para consolidar conhecimentos em:
 
-Atualmente o projeto está na fase de estruturação inicial e prototipação das telas.
+- Arquitetura de Software
+- React e Vite
+- Material UI
+- Organização Modular
+- Context API
+- React Router
+- Autenticação
+- Documentação Técnica
+- Boas Práticas de Desenvolvimento
+
+---
+
+## 📌 Status
+
+🚧 Em desenvolvimento.
+
+Atualmente o projeto encontra-se na fase de definição da arquitetura, documentação e desenvolvimento das funcionalidades iniciais.
+
+---
+
+## 👩‍💻 Desenvolvedora
+
+**Nayara Karine**
