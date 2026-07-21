@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 
-const LoginFooter = () => {
+const Footer = () => {
   return (
     <Box
       sx={{
@@ -21,4 +21,4 @@ const LoginFooter = () => {
   );
 };
 
-export default LoginFooter;
+export default Footer;

@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import Logo from "../../../public/logo.svg";
+import Logo from "../../../assets/logo.svg";
 
 
 const SidebarHeader = () => {
