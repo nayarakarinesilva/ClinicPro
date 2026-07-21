@@ -1,9 +1,10 @@
 import React from "react";
-import { Box, Button, Typography } from "@mui/material";
-import Input from "../../../ui/Input";
-import logo from "../../../../public/logo.svg";
+import { Box, Typography } from "@mui/material";
+import Input from "../../../../ui/Input";
+import logo from "../../../../assets/logo.svg";
 import { useLogin } from "../hooks/useLogin";
 import { Link } from "react-router-dom";
+import Button from "../../../../ui/Button/Button";
 
 const LoginForm = () => {
   const { handleLogin, handleChange, form, error } = useLogin();
@@ -23,29 +24,22 @@ const LoginForm = () => {
         sx={{
           height: "550px",
           width: "100%",
-          maxWidth: 420,
+          maxWidth: 480,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           gap: 2,
-          backgroundColor: "#fff",
           padding: "40px",
-          borderRadius: "12px",
-          border: "solid 1px #d5d8e9",
-          boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.08)",
         }}
       >
-        <Box sx={{ color: "#434654" }}>
+        <Box sx={{ color: "#434655" }}>
           <Typography sx={{ fontSize: "28px", fontWeight: 700 }}>
             Entrar no Sistema
           </Typography>
 
-          <Typography color="text.secondary">
-            Acesse seu painel administrativo
-          </Typography>
+          <Typography>Acesse seu painel administrativo</Typography>
         </Box>
-
         <Input
           label="E-mail corporativo"
           name={"email"}
@@ -54,7 +48,6 @@ const LoginForm = () => {
           onChange={handleChange}
           fullWidth
         />
-
         <Input
           label="Senha"
           name={"password"}
@@ -63,27 +56,12 @@ const LoginForm = () => {
           onChange={handleChange}
           fullWidth
         />
-
         {error && (
           <Typography color="error" fontSize={14}>
             {error}
           </Typography>
         )}
-
-        <Button
-          variant="contained"
-          onClick={handleLogin}
-          fullWidth
-          sx={{
-            py: 1.2,
-            fontWeight: 600,
-            textTransform: "none",
-            background: "#004AC6",
-          }}
-        >
-          Entrar na Plataforma
-        </Button>
-
+        <Button text="Entrar na Plataforma" onClick={handleLogin} />
         <Box
           mt={2}
           sx={{

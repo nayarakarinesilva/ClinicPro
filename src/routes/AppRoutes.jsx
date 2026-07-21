@@ -1,13 +1,13 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Login from "../components/Login/Login";
-import Register from "../components/Register/Register";
 import { PrivateRoute } from "./PrivateRoute";
-import Layout from "../components/Layout/Layout";
-import Dashboard from "../pages/Dashboard/Dashboard";
-import Patients from "../pages/Patients/Patients";
-import Doctors from "../pages/Doctors/Doctors";
-import Consultations from "../pages/Consultations/Consultations";
+import Login from "../modules/Auth/Login/Login";
+import Register from "../modules/Auth/Register/Register";
+import Dashboard from "../modules/Dashboard/Dashboard";
+import Patients from "../modules/Patients/Patients";
+import Doctors from "../modules/Doctors/Doctors";
+import Consultations from "../modules/Consultations/Consultations";
+import Layout from "../shared/Layout/Layout";
 
 const AppRoutes = () => {
   return (

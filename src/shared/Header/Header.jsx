@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import Logo from "../../../assets/logo.svg";
+import Logo from "../../assets/logo.svg";
 
-const LoginHeader = () => {
+const Header = () => {
   return (
     <Box
       sx={{
@@ -39,4 +39,4 @@ const LoginHeader = () => {
   );
 };
 
-export default LoginHeader;
+export default Header;
