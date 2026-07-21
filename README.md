@@ -67,7 +67,7 @@ public/
 Clone o repositório:
 
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/nayarakarinesilva/ClinicPro.git
 ```
 
 Acesse a pasta do projeto:
