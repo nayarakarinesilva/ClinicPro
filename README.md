@@ -34,35 +34,54 @@ O sistema tem como objetivo centralizar o gerenciamento de pacientes, médicos, 
 
 ##  Instalação
 
-Clone o repositório:
+## ⚙️ Como executar
 
 ```bash
 git clone <https://github.com/nayarakarinesilva/ClinicPro>
 ```
 
-Acesse a pasta do projeto:
+cd ClinicPro
 
-```bash
-cd clinicpro
-```
-
-Instale as dependências:
-
-```bash
 npm install
-```
 
-Inicie o servidor de desenvolvimento:
-
-```bash
 npm run dev
 ```
 
-A aplicação estará disponível em:
+---
 
-```text
-http://localhost:5173
-```
+## 📚 Documentação
+
+Inicie o servidor de desenvolvimento:
+
+Atualmente a documentação contempla:
+
+- 📋 Requisitos Funcionais
+- 📋 Requisitos Não Funcionais
+- 📝 Casos de Uso
+- 🧩 Modelagem de Domínio
+- 🏗 Arquitetura
+- 📂 Estrutura de Pastas
+- 📊 Diagrama de Componentes
+- 🛣 Roadmap
+- 📜 Changelog
+- 
+---
+
+## 🎯 Objetivos do Projeto
+
+Este projeto foi criado para consolidar conhecimentos em:
+
+- Arquitetura de Software
+- React e Vite
+- Material UI
+- Organização Modular
+- Context API
+- React Router
+- Autenticação
+- Documentação Técnica
+- Boas Práticas de Desenvolvimento
+
+---
 
 ---
 
