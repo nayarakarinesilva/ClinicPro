@@ -39,15 +39,13 @@ O sistema tem como objetivo centralizar o gerenciamento de pacientes, médicos, 
 ```bash
 git clone <https://github.com/nayarakarinesilva/ClinicPro>
 ```
-
+```bash
 cd ClinicPro
 
 npm install
 
 npm run dev
 ```
-
----
 
 ## 📚 Documentação
 
@@ -64,8 +62,6 @@ Atualmente a documentação contempla:
 - 📊 Diagrama de Componentes
 - 🛣 Roadmap
 - 📜 Changelog
-- 
----
 
 ## 🎯 Objetivos do Projeto
 
@@ -81,9 +77,6 @@ Este projeto foi criado para consolidar conhecimentos em:
 - Documentação Técnica
 - Boas Práticas de Desenvolvimento
 
----
-
----
 
 ## 📂 Estrutura do Projeto
 
