@@ -97,7 +97,7 @@ src/
 
 ## 📖 Documentação
 
-A documentação completa do projeto está disponível na **Wiki**, incluindo:
+A documentação completa do projeto está disponível na [**Wiki**](https://github.com/nayarakarinesilva/ClinicPro/wiki), incluindo:
 
 - Arquitetura
 - Estrutura do Projeto
