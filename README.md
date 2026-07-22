@@ -1,67 +1,44 @@
 # 🏥 ClinicPro
 
-O **ClinicPro** é uma aplicação web para gerenciamento de clínicas e consultórios médicos, desenvolvido com **React**, **Vite** e **Material UI**.
+ClinicPro é uma aplicação web para gerenciamento de clínicas e consultórios médicos, desenvolvida com **React**, **Vite** e **Material UI**.
 
-O objetivo do projeto é centralizar o gerenciamento de pacientes, médicos, consultas e informações clínicas em uma interface moderna, intuitiva e responsiva.
+O sistema tem como objetivo centralizar o gerenciamento de pacientes, médicos, consultas e demais informações clínicas por meio de uma interface moderna, intuitiva e responsiva.
 
-> 🚧 Projeto em desenvolvimento.
-
----
-
-## ✨ Funcionalidades
-
-- 🔐 Autenticação de usuários
-- 📊 Dashboard
-- 👥 Gestão de Pacientes
-- 👨‍⚕️ Gestão de Médicos
-- 📅 Gestão de Consultas
-- 📋 Prontuários
-- 💰 Controle Financeiro
+> 🚧 O projeto está em desenvolvimento.
 
 ---
 
-## 🚀 Tecnologias
+##  Funcionalidades
 
-### Front-end
+-  Autenticação de usuários
+-  Dashboard com indicadores
+-  Gestão de pacientes
+-  Gestão de médicos
+-  Agendamento de consultas
+-  Prontuários eletrônicos
+-  Controle financeiro
+
+---
+
+##  Tecnologias
 
 - React
 - Vite
 - Material UI
 - React Router
 - JavaScript
+- Context API
 - ESLint
 
-### Back-end (Planejado)
-
-- Node.js
-- Express
-- Banco de Dados Relacional
-
 ---
 
-## 📁 Estrutura do Projeto
-
-O projeto utiliza uma organização baseada em módulos (Feature-Based Structure), facilitando a manutenção e a evolução da aplicação.
-
-```text
-src/
-├── modules/
-├── shared/
-├── ui/
-├── context/
-├── routes/
-├── theme/
-├── assets/
-├── App.jsx
-└── main.jsx
-```
-
----
+##  Instalação
 
 ## ⚙️ Como executar
 
 ```bash
-git clone https://github.com/nayarakarinesilva/ClinicPro.git
+git clone <https://github.com/nayarakarinesilva/ClinicPro>
+```
 
 cd ClinicPro
 
@@ -74,7 +51,7 @@ npm run dev
 
 ## 📚 Documentação
 
-A documentação completa do projeto está disponível na Wiki.
+Inicie o servidor de desenvolvimento:
 
 Atualmente a documentação contempla:
 
@@ -106,14 +83,70 @@ Este projeto foi criado para consolidar conhecimentos em:
 
 ---
 
-## 📌 Status
+---
 
-🚧 Em desenvolvimento.
+## 📂 Estrutura do Projeto
 
-Atualmente o projeto encontra-se na fase de definição da arquitetura, documentação e desenvolvimento das funcionalidades iniciais.
+```text
+src/
+├── assets/
+├── context/
+├── modules/
+├── routes/
+├── shared/
+├── theme/
+├── ui/
+├── App.jsx
+└── main.jsx
+```
 
 ---
 
-## 👩‍💻 Desenvolvedora
+## 📖 Documentação
 
-**Nayara Karine**
+A documentação completa do projeto está disponível na **Wiki**, incluindo:
+
+- Arquitetura
+- Estrutura do Projeto
+- Requisitos Funcionais
+- Requisitos Não Funcionais
+- Casos de Uso
+- Modelagem de Domínio
+- Diagrama de Componentes
+- Fluxos da Aplicação
+
+---
+
+## 🎨 Design
+
+A interface foi projetada priorizando:
+
+- Responsividade
+- Acessibilidade
+- Usabilidade
+- Consistência visual
+- Experiência do usuário
+
+---
+
+## 🗺️ Roadmap
+
+Funcionalidades previstas para as próximas versões:
+
+- [ ] Recuperação de senha
+- [ ] Perfil do usuário
+- [ ] Notificações
+- [ ] Upload de documentos dos pacientes
+- [ ] Histórico completo de consultas
+- [ ] Exportação de relatórios em PDF
+- [ ] Dashboard com gráficos e métricas
+- [ ] Integração com calendário
+- [ ] Modo escuro
+- [ ] Testes automatizados
+- [ ] Internacionalização (i18n)
+
+## 📌 Status
+
+🚧 **Em desenvolvimento**
+
+O projeto encontra-se em fase de implementação e novas funcionalidades serão adicionadas continuamente.

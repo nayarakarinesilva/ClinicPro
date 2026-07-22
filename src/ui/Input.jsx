@@ -6,8 +6,9 @@ const Input = ({ type, placeholder, value, onChange, label, onBlur, name, msgErr
     <Box sx={{ width: "100%" }}>
       <Typography
         sx={{
-          color: "#7C3AED",
-          fontWeight: 500,
+          color: "#004AC6",
+          fontWeight: 600,
+          fontSize:"14px"
         }}
       >
         {label}
