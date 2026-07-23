@@ -11,7 +11,7 @@ O sistema tem como objetivo centralizar o gerenciamento de pacientes, médicos, 
 ##  Funcionalidades
 
 -  Autenticação de usuários
--  Dashboard com indicadores
+-  Dashboard 
 -  Gestão de pacientes
 -  Gestão de médicos
 -  Agendamento de consultas
@@ -61,7 +61,6 @@ Atualmente a documentação contempla:
 - 📂 Estrutura de Pastas
 - 📊 Diagrama de Componentes
 - 🛣 Roadmap
-- 📜 Changelog
 
 ## 🎯 Objetivos do Projeto
 
@@ -132,6 +131,7 @@ Funcionalidades previstas para as próximas versões:
 - [ ] Upload de documentos dos pacientes
 - [ ] Histórico completo de consultas
 - [ ] Exportação de relatórios em PDF
+- [ ] Exportação de nota ou recibo
 - [ ] Dashboard com gráficos e métricas
 - [ ] Integração com calendário
 - [ ] Modo escuro
