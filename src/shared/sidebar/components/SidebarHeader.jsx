@@ -12,7 +12,7 @@ const SidebarHeader = () => {
         marginBottom: "1.5rem",
       }}
     >
-      <Image src="/logo.svg" alt="Logo" width={30} height={30} />
+      <Image priority src="/logo.svg" alt="Logo" width={30} height={30} />
 
       <Box
         sx={{
