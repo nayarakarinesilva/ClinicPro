@@ -1,7 +1,7 @@
 "use client";
 
-import { Box, Typography } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { Box } from "@mui/material";
+import { usePathname, useRouter } from "next/navigation";
 
 import SidebarHeader from "./components/SidebarHeader";
 import SidebarItem from "./components/SidebarItem";
@@ -13,6 +13,7 @@ import InsertInvitationOutlinedIcon from "@mui/icons-material/InsertInvitationOu
 
 const Sidebar = () => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleNavigate = (route) => {
     router.push(route);
@@ -23,28 +24,32 @@ const Sidebar = () => {
       sx={{
         borderRight: "1px solid",
         borderColor: "divider",
+        padding: 1,
       }}
     >
       <SidebarHeader />
       <SidebarItem
         icon={DashboardIcon}
         text={"Dashboard"}
-        onClick={() => handleNavigate("/dashboard")}
+        active={pathname === "/painel"}
+        onClick={() => handleNavigate("/painel")}
       />
       <SidebarItem
         icon={PermIdentityOutlinedIcon}
         text={"Pacientes"}
-        onClick={() => handleNavigate("/patients")}
+        active={pathname === "/pacientes"}
+        onClick={() => handleNavigate("/pacientes")}
       />
-      <SidebarItem
+      {/* <SidebarItem
         icon={MedicalServicesOutlinedIcon}
         text={"Médicos"}
         onClick={() => handleNavigate("/doctors")}
-      />
+      /> */}
       <SidebarItem
         icon={InsertInvitationOutlinedIcon}
         text={"Consultas"}
-        onClick={() => handleNavigate("/consultations")}
+        active={pathname === "/consultas"}
+        onClick={() => handleNavigate("/consultas")}
       />
     </Box>
   );

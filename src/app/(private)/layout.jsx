@@ -9,7 +9,7 @@ export default function LayoutPrivate({ children }) {
         <Sidebar />
         <Box
           sx={{
-            p: 3,
+            p: 2,
             height: "95vh",
             backgroundColor: "background.paper",
           }}

@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-export default function Dashboard() {
+export default function Painel() {
   return (
     <Box>
       <Typography>Visão Geral do Dashboard</Typography>

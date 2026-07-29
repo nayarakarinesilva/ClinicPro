@@ -5,8 +5,6 @@ import Link from "next/link";
 export default function HeaderDashboard() {
   const today = formatFullDate();
 
-  console.log(today);
-
   return (
     <Box
       sx={{
@@ -16,18 +14,22 @@ export default function HeaderDashboard() {
         gap: 2,
         borderBottom: "1px solid",
         borderColor: "divider",
+        padding: 1,
       }}
     >
       {today}
       <Box
         sx={{
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
+          gap: 1,
+          borderLeft: "1px solid",
+          borderColor: "divider",
+          padding: 1,
         }}
       >
-        <Avatar sx={{  bgcolor: "green" }}>N</Avatar>
         Nayara
+        <Avatar sx={{ bgcolor: "primary.main" }}>NK</Avatar>
       </Box>
       <Button>
         <Link href={"/login"}>Sair</Link>
