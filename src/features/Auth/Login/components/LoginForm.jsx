@@ -1,13 +1,21 @@
+"use client";
+
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import Input from "@/ui/Input/Input";
 import CustomButton from "@/ui/CustomButton/CustomButton";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 // import { useLogin } from "../hooks/useLogin";
 // import { Link } from "react-router-dom";
 
 export default function LoginForm() {
   // const { handleLogin, handleChange, form, error } = useLogin();
+  
+  const router = useRouter();
+  const handleLogin = () => {
+    router.push("/painel");
+  };
 
   return (
     <Box
@@ -61,10 +69,7 @@ export default function LoginForm() {
             {error}
           </Typography>
         )} */}
-        <CustomButton
-          text="Entrar na Plataforma"
-          // onClick={handleLogin}
-        />
+        <CustomButton text="Entrar na Plataforma" onClick={handleLogin} />
         <Box
           mt={2}
           sx={{
