@@ -1,7 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
-import AuthHeader from "../components/AuthHeader/Header";
-import Footer from "@/shared/Footer/Footer";
+import { Box } from "@mui/material";
 import LoginImage from "./components/LoginImage";
 import LoginForm from "./components/LoginForm";
 

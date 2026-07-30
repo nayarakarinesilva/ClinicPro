@@ -5,17 +5,11 @@ import { Box, Typography } from "@mui/material";
 import Input from "@/ui/Input/Input";
 import CustomButton from "@/ui/CustomButton/CustomButton";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-// import { useLogin } from "../hooks/useLogin";
-// import { Link } from "react-router-dom";
+import { useLogin } from "../hooks/useLogin";
 
 export default function LoginForm() {
-  // const { handleLogin, handleChange, form, error } = useLogin();
   
-  const router = useRouter();
-  const handleLogin = () => {
-    router.push("/painel");
-  };
+  const { handleLogin, handleChange, form } = useLogin();
 
   return (
     <Box
@@ -52,16 +46,16 @@ export default function LoginForm() {
           label="E-mail corporativo"
           name={"email"}
           type="email"
-          // value={form.email}
-          // onChange={handleChange}
+          value={form.email}
+          onChange={handleChange}
           fullWidth
         />
         <Input
           label="Senha"
           name={"password"}
           type="password"
-          // value={form.password}
-          // onChange={handleChange}
+          value={form.password}
+          onChange={handleChange}
           fullWidth
         />
         {/* {error && (
