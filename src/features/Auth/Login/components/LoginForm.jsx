@@ -8,8 +8,7 @@ import Link from "next/link";
 import { useLogin } from "../hooks/useLogin";
 
 export default function LoginForm() {
-  
-  const { handleLogin, handleChange, form } = useLogin();
+  const { register, handleSubmit, handleLogin, errors } = useLogin();
 
   return (
     <Box
@@ -42,48 +41,66 @@ export default function LoginForm() {
 
           <Typography>Acesse seu painel administrativo</Typography>
         </Box>
-        <Input
-          label="E-mail corporativo"
-          name={"email"}
-          type="email"
-          value={form.email}
-          onChange={handleChange}
-          fullWidth
-        />
-        <Input
-          label="Senha"
-          name={"password"}
-          type="password"
-          value={form.password}
-          onChange={handleChange}
-          fullWidth
-        />
-        {/* {error && (
-          <Typography color="error" fontSize={14}>
-            {error}
-          </Typography>
-        )} */}
-        <CustomButton text="Entrar na Plataforma" onClick={handleLogin} />
-        <Box
-          mt={2}
-          sx={{
+
+        <form
+          style={{
+            width: "100%",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
+            gap: 3,
           }}
+          onSubmit={handleSubmit(handleLogin)}
         >
-          <Typography color="text.secondary">Não tem conta?</Typography>
-          <Link
-            href={"/cadastro"}
-            style={{
-              color: "#004AC6",
-              fontWeight: 500,
-              textDecoration: "none",
+          <Input
+            {...register("email", {
+              required: "E-mail é obrigatório",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Digite um e-mail válido",
+              },
+            })}
+            label="E-mail corporativo"
+            type="email"
+            fullWidth
+            error={!!errors.email}
+            helperText={errors.email?.message}
+          />
+          <Input
+            {...register("password", {
+              required: "Senha é obrigatória",
+              minLength: {
+                value: 6,
+                message: "A senha deve ter no mínimo 6 caracteres",
+              },
+            })}
+            label="Senha"
+            type="password"
+            fullWidth
+            error={!!errors.password}
+            helperText={errors.password?.message}
+          />
+          <CustomButton text="Entrar na Plataforma" type="submit" />
+          <Box
+            mt={2}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            Criar conta
-          </Link>
-        </Box>
+            <Typography color="text.secondary">Não tem conta?</Typography>
+            <Link
+              href={"/cadastro"}
+              style={{
+                color: "#004AC6",
+                fontWeight: 500,
+                textDecoration: "none",
+              }}
+            >
+              Criar conta
+            </Link>
+          </Box>
+        </form>
       </Box>
     </Box>
   );

@@ -1,33 +1,16 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export const useLogin = () => {
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  });
-
   const router = useRouter();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleLogin = () => {
-    const hasLogin = login(form.email, form.password);
-
-    if (hasLogin === true) {
-      router.push("/painel");
-    } else {
-      alert("E-mail ou senha incorretos");
-    }
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const users = [
     {
@@ -51,9 +34,20 @@ export const useLogin = () => {
     return true;
   }
 
+  const handleLogin = (data) => {
+    const hasLogin = login(data.email, data.password);
+
+    if (hasLogin === true) {
+      router.push("/painel");
+    } else {
+      alert("E-mail ou senha incorretos");
+    }
+  };
+
   return {
+    register,
+    handleSubmit,
     handleLogin,
-    handleChange,
-    form
+    errors,
   };
 };
