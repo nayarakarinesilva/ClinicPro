@@ -1,19 +1,13 @@
+"use client";
+
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React from "react";
 import Input from "@/ui/Input/Input";
 import Link from "next/link";
+import { useRegister } from "../hooks/useRegister";
 
 export default function RegisterForm() {
-  // const {
-  //   handleChange,
-  //   form,
-  //   setTouched,
-  //   touched,
-  //   errorMessages,
-  //   errors,
-  //   handleRegister,
-  //   error,
-  // } = useRegister();
+  const { register, handleSubmit, handleRegister, errors } = useRegister();
 
   return (
     <Box
@@ -43,94 +37,106 @@ export default function RegisterForm() {
           gap: 3,
         }}
       >
-        <Input
-          label="Nome"
-          type="text"
-          placeholder={"Nome"}
-          name={"name"}
-          // value={form.name}
-          // onChange={handleChange}
-          // onBlur={() => setTouched((prev) => ({ ...prev, name: true }))}
-          // msgError={touched.name && errors.name ? errorMessages.name : ""}
-        />
-        <Input
-          label="E-mail"
-          type="email"
-          placeholder={"E-mail"}
-          name={"email"}
-          // value={form.email}
-          // onChange={handleChange}
-          // onBlur={() => setTouched((prev) => ({ ...prev, email: true }))}
-          // msgError={touched.email && errors.email ? errorMessages.email : ""}
-        />
-        <Input
-          label="Confirmar e-mail"
-          type="email"
-          placeholder={"Cofirme e-mail"}
-          name={"confirmEmail"}
-          // value={form.confirmEmail}
-          // onChange={handleChange}
-          // onBlur={() => setTouched((prev) => ({ ...prev, confirmEmail: true }))}
-          // msgError={
-          //   touched.confirmEmail && errors.confirmEmail
-          //     ? errorMessages.confirmEmail
-          //     : ""
-          // }
-        />
-        <Input
-          label="Senha"
-          type="password"
-          placeholder={"Senha"}
-          name={"password"}
-          // value={form.password}
-          // onChange={handleChange}
-          // onBlur={() => setTouched((prev) => ({ ...prev, password: true }))}
-          // msgError={
-          //   touched.password && errors.password ? errorMessages.password : ""
-          // }
-        />
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: "20px",
-        }}
-      >
-        <Button
-          type="submit"
-          variant="contained"
-          // onClick={handleRegister}
-          sx={{
-            maxWidth: "250px",
-            textTransform: "uppercase",
-            fontWeight: 600,
-          }}
-        >
-          Cadastrar
-        </Button>
-      </Box>
-      <Box
-        mt={2}
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography color="text.secondary">Já tem uma conta?</Typography>
-        <Link
-          href={"/login"}
+        <form
           style={{
-            color: "#004AC6",
-            fontWeight: 500,
-            textDecoration: "none",
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            gap: 3,
           }}
+          onSubmit={handleSubmit(handleRegister)}
         >
-          Entrar no sistema
-        </Link>
+          <Input
+            {...register("name", {
+              required: "Nome é obrigatório",
+            })}
+            label="Nome"
+            type="text"
+            placeholder={"Nome"}
+            error={!!errors.name}
+            helperText={errors.name?.message}
+          />
+          <Input
+            {...register("email", {
+              required: "E-mail é obrigatório",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Digite um e-mail válido",
+              },
+            })}
+            label="E-mail"
+            type="email"
+            placeholder={"E-mail"}
+            error={!!errors.email}
+            helperText={errors.email?.message}
+          />
+          <Input
+            {...register("confirmEmail", {
+              required: "Confirmação do e-mail é obrigatória",
+            })}
+            label="Confirmar e-mail"
+            type="email"
+            placeholder={"Cofirme e-mail"}
+            error={!!errors.confirmEmail}
+            helperText={errors.confirmEmail?.message}
+          />
+          <Input
+            {...register("password", {
+              required: "Senha é obrigatória",
+              minLength: {
+                value: 6,
+                message: "A senha deve ter no mínimo 6 caracteres",
+              },
+            })}
+            label="Senha"
+            type="password"
+            placeholder="Senha"
+            error={!!errors.password}
+            helperText={errors.password?.message}
+          />
+
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: "20px",
+            }}
+          >
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                maxWidth: "250px",
+                textTransform: "uppercase",
+                fontWeight: 600,
+              }}
+            >
+              Cadastrar
+            </Button>
+          </Box>
+
+          <Box
+            mt={2}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography color="text.secondary">Já tem uma conta?</Typography>
+            <Link
+              href={"/login"}
+              style={{
+                color: "#004AC6",
+                fontWeight: 500,
+                textDecoration: "none",
+              }}
+            >
+              Entrar no sistema
+            </Link>
+          </Box>
+        </form>
       </Box>
     </Box>
   );
