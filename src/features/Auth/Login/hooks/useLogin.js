@@ -1,24 +1,19 @@
 'use client';
 
+import { useAuthStore } from '@/store/useAuthStore';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 export const useLogin = () => {
   const router = useRouter();
+  const setUser = useAuthStore((state) => state.login);
+  const users = useAuthStore((state) => state.users);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const users = [
-    {
-      email: 'nayara@email.com',
-      password: '123456',
-      name: 'Nayara',
-    },
-  ];
 
   function login(email, password) {
     const user = users.find((user) => user.email === email);
@@ -35,9 +30,10 @@ export const useLogin = () => {
   }
 
   const handleLogin = (data) => {
-    const hasLogin = login(data.email, data.password);
+    const user = login(data.email, data.password);
 
-    if (hasLogin === true) {
+    if (user === true) {
+      setUser(user);
       router.push('/painel');
     } else {
       alert('E-mail ou senha incorretos');
