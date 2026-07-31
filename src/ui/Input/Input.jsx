@@ -1,19 +1,33 @@
 import { Box, TextField, Typography } from "@mui/material";
 import React from "react";
 
-const Input = ({ type, placeholder, value, onChange, label, onBlur, name, msgError }) => {
+const Input = ({
+  type,
+  placeholder,
+  value,
+  onChange,
+  label,
+  onBlur,
+  name,
+  msgError,
+  error,
+  helperText,
+  ...props
+}) => {
   return (
     <Box sx={{ width: "100%" }}>
       <Typography
         sx={{
           color: "#004AC6",
           fontWeight: 600,
-          fontSize:"14px"
+          fontSize: "14px",
         }}
       >
         {label}
       </Typography>
+
       <TextField
+        {...props}
         type={type}
         placeholder={placeholder}
         value={value}
@@ -21,10 +35,15 @@ const Input = ({ type, placeholder, value, onChange, label, onBlur, name, msgErr
         onChange={onChange}
         onBlur={onBlur}
         sx={{ width: "100%" }}
+        error={error}
+        helperText={helperText}
       />
-      <Typography sx={{ color: "red", fontSize: "12px" }}>
-        {msgError}
-      </Typography>
+
+      {msgError && (
+        <Typography sx={{ color: "red", fontSize: "12px" }}>
+          {msgError}
+        </Typography>
+      )}
     </Box>
   );
 };
