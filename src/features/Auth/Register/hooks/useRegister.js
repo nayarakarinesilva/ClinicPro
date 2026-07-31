@@ -1,26 +1,30 @@
 'use client';
+import { useAuthStore } from '@/store/useAuthStore';
 import { useForm } from 'react-hook-form';
 
 export const useRegister = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
+
+  const registerUser = useAuthStore((state) => state.register);
+  const users = useAuthStore((state) => state.users);
 
   const handleRegister = (data) => {
     if (data.email !== data.confirmEmail) {
       alert('Os e-mails não são iguais');
       return;
     }
-    // Pega usuários existentes
-    const users = JSON.parse(localStorage.getItem('users')) || [];
 
     // Pega usuários existentes
     const hasUser = users.some((user) => user.email === data.email);
 
     if (hasUser) {
       alert('Já tem uma conta com esse e-mail cadastrada.');
+      reset();
       return;
     }
 
@@ -31,10 +35,11 @@ export const useRegister = () => {
     };
 
     // Adiciona novo usuário
-    users.push(user);
+    registerUser(user);
 
-    // Salva novamente
-    localStorage.setItem('users', JSON.stringify(users));
+    alert('Cadastro realizado com sucesso!');
+    
+    reset();
     console.log(data);
   };
 
