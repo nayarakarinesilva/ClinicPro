@@ -1,16 +1,46 @@
-import { defineConfig, globalIgnores } from 'eslint/config';
-import nextVitals from 'eslint-config-next/core-web-vitals';
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import checkFile from "eslint-plugin-check-file";
 
-const eslintConfig = defineConfig([
+export default defineConfig([
   ...nextVitals,
-  // Override default ignores of eslint-config-next.
+  {
+    plugins: {
+      "check-file": checkFile,
+    },
+    rules: {
+      "check-file/folder-naming-convention": [
+        "error",
+        {
+          "src/app/**": "KEBAB_CASE",
+          "src/components/**": "PASCAL_CASE",
+        },
+        {
+          ignorePatterns: [
+            "src/app/(private)/**",
+            "src/app/(public)/**",
+          ],
+        },
+      ],
+
+      "check-file/filename-naming-convention": [
+        "error",
+        {
+          "src/components/**/*.{js,jsx,ts,tsx}": "PASCAL_CASE",
+          "src/hooks/**/*.{js,jsx,ts,tsx}": "CAMEL_CASE",
+          "src/utils/**/*.{js,ts}": "CAMEL_CASE",
+        },
+        {
+          ignoreMiddleExtensions: true,
+        },
+      ],
+    },
+  },
+
   globalIgnores([
-    // Default ignores of eslint-config-next:
-    '.next/**',
-    'out/**',
-    'build/**',
-    'next-env.d.ts',
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
   ]),
 ]);
-
-export default eslintConfig;
