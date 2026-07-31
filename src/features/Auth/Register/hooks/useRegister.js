@@ -1,5 +1,5 @@
-"use client";
-import { useForm } from "react-hook-form";
+'use client';
+import { useForm } from 'react-hook-form';
 
 export const useRegister = () => {
   const {
@@ -10,17 +10,17 @@ export const useRegister = () => {
 
   const handleRegister = (data) => {
     if (data.email !== data.confirmEmail) {
-      alert("Os e-mails não são iguais");
+      alert('Os e-mails não são iguais');
       return;
     }
     // Pega usuários existentes
-    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const users = JSON.parse(localStorage.getItem('users')) || [];
 
     // Pega usuários existentes
     const hasUser = users.some((user) => user.email === data.email);
 
     if (hasUser) {
-      alert("Já tem uma conta com esse e-mail cadastrada.");
+      alert('Já tem uma conta com esse e-mail cadastrada.');
       return;
     }
 
@@ -34,7 +34,7 @@ export const useRegister = () => {
     users.push(user);
 
     // Salva novamente
-    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem('users', JSON.stringify(users));
     console.log(data);
   };
 

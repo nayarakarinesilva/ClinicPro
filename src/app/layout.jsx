@@ -1,24 +1,24 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Providers from "./providers";
-import Footer from "@/shared/Footer/Footer";
-import { Box } from "@mui/material";
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
+import Providers from './providers';
+import Footer from '@/shared/Footer/Footer';
+import { Box } from '@mui/material';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export const metadata = {
-  title: "ClinicPro",
-  description: "Sistema para gerenciamento de clínicas.",
+  title: 'ClinicPro',
+  description: 'Sistema para gerenciamento de clínicas.',
   icons: {
-    icon: "/logo.svg",
+    icon: '/logo.svg',
   },
 };
 
@@ -32,9 +32,9 @@ export default function RootLayout({ children }) {
         <Providers>
           <Box
             sx={{
-              minHeight: "100vh",
-              display: "flex",
-              flexDirection: "column",
+              minHeight: '100vh',
+              display: 'flex',
+              flexDirection: 'column',
             }}
           >
             <Box component="main" sx={{ flex: 1 }}>

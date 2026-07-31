@@ -1,38 +1,38 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography } from '@mui/material';
 
 export default function LoginImage() {
   return (
     <Box
       sx={{
         flex: 1,
-        display: { xs: "none", md: "flex" },
+        display: { xs: 'none', md: 'flex' },
         minHeight: 650,
-        borderRadius: "16px 0px 0px 16px",
-        overflow: "hidden",
-        position: "relative",
+        borderRadius: '16px 0px 0px 16px',
+        overflow: 'hidden',
+        position: 'relative',
         backgroundImage: "url('/images/loginImage.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
       {/* Overlay */}
       <Box
         sx={{
-          position: "absolute",
+          position: 'absolute',
           inset: 0,
           background:
-            "linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,.15))",
+            'linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,.15))',
         }}
       />
 
       {/* Texto */}
       <Box
         sx={{
-          position: "absolute",
+          position: 'absolute',
           bottom: 40,
           left: 40,
-          color: "#fff",
+          color: '#fff',
           zIndex: 1,
         }}
       >

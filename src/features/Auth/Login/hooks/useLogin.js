@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useRouter } from 'next/navigation';
+import { useForm } from 'react-hook-form';
 
 export const useLogin = () => {
   const router = useRouter();
@@ -14,9 +14,9 @@ export const useLogin = () => {
 
   const users = [
     {
-      email: "nayara@email.com",
-      password: "123456",
-      name: "Nayara",
+      email: 'nayara@email.com',
+      password: '123456',
+      name: 'Nayara',
     },
   ];
 
@@ -24,11 +24,11 @@ export const useLogin = () => {
     const user = users.find((user) => user.email === email);
 
     if (!user) {
-      return "Usuário não encontrado";
+      return 'Usuário não encontrado';
     }
 
     if (user.password !== password) {
-      return "Senha incorreta";
+      return 'Senha incorreta';
     }
 
     return true;
@@ -38,9 +38,9 @@ export const useLogin = () => {
     const hasLogin = login(data.email, data.password);
 
     if (hasLogin === true) {
-      router.push("/painel");
+      router.push('/painel');
     } else {
-      alert("E-mail ou senha incorretos");
+      alert('E-mail ou senha incorretos');
     }
   };
 

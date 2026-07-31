@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
 // O middleware roda antes das páginas.
 // Evitar coisas lentas aqui: chamadas HTTP, banco de dados ou funções assíncronas.
@@ -8,13 +8,13 @@ import { NextResponse } from "next/server";
 // - redirect: manda o usuário para outra página
 // - next: deixa continuar normalmente
 const publicRoutes = [
-  { path: "/login", whenAuthenticated: "redirect" },
-  { path: "/cadastro", whenAuthenticated: "redirect" },
-  { path: "/painel", whenAuthenticated: "next" },
+  { path: '/login', whenAuthenticated: 'redirect' },
+  { path: '/cadastro', whenAuthenticated: 'redirect' },
+  { path: '/painel', whenAuthenticated: 'next' },
 ];
 
 // Rota para onde o usuário vai quando tentar acessar algo sem estar logado
-const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = "/login";
+const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = '/login';
 
 export function middleware(request) {
   // Pega a rota atual que o usuário está tentando acessar
@@ -24,7 +24,7 @@ export function middleware(request) {
   const publicRoute = publicRoutes.find((route) => route.path === path);
 
   // Verifica se existe um token de autenticação nos cookies
-  const authToken = request.cookies.get("token");
+  const authToken = request.cookies.get('token');
 
   // Usuário não está logado e está tentando acessar uma rota pública
   // Exemplo: acessar /login sem token
@@ -48,10 +48,10 @@ export function middleware(request) {
   if (
     authToken &&
     publicRoute &&
-    publicRoute.whenAuthenticated === "redirect"
+    publicRoute.whenAuthenticated === 'redirect'
   ) {
     const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = "/";
+    redirectUrl.pathname = '/';
 
     return NextResponse.redirect(redirectUrl);
   }
@@ -65,7 +65,7 @@ export function middleware(request) {
     return NextResponse.next();
   }
 
-  if (request.nextUrl.pathname.includes(".")) {
+  if (request.nextUrl.pathname.includes('.')) {
     return NextResponse.next();
   }
 
@@ -84,6 +84,6 @@ export const config = {
       - _next/image -> otimização de imagens
       - favicon.ico -> ícone do site
     */
-    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 };

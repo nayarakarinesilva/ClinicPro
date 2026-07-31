@@ -1,4 +1,4 @@
-import AuthHeader from "@/features/Auth/components/AuthHeader/Header";
+import AuthHeader from '@/features/Auth/components/AuthHeader/Header';
 
 export default function LayoutPublic({ children }) {
   return (

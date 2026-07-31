@@ -1,19 +1,19 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
-import Image from "next/image";
+import React from 'react';
+import { Box, Typography } from '@mui/material';
+import Image from 'next/image';
 
 export default function AuthHeader() {
   return (
     <Box
       sx={{
-        display: "flex",
-        alignItems: "center",
+        display: 'flex',
+        alignItems: 'center',
         gap: 1,
         px: 4,
         py: 4,
         height: 30,
-        backgroundColor: "#fff",
-        borderBottom: "1px solid #e5e7eb",
+        backgroundColor: '#fff',
+        borderBottom: '1px solid #e5e7eb',
       }}
     >
       {/* 
@@ -24,9 +24,9 @@ export default function AuthHeader() {
 
       <Typography
         sx={{
-          fontSize: "24px",
+          fontSize: '24px',
           fontWeight: 600,
-          color: "#003594",
+          color: '#003594',
         }}
       >
         ClinicPro
