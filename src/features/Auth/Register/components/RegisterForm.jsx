@@ -1,10 +1,12 @@
 'use client';
 
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import React from 'react';
 import Input from '@/ui/Input/Input';
-import Link from 'next/link';
 import { useRegister } from '../hooks/useRegister';
+import CustomButton from '@/ui/CustomButton/CustomButton';
+import HeaderForm from '../../components/HeaderForm/HeaderForm';
+import FormFooterLink from '../../components/FormFooterLink/FormFooterLink';
 
 export default function RegisterForm() {
   const { register, handleSubmit, handleRegister, errors } = useRegister();
@@ -12,31 +14,32 @@ export default function RegisterForm() {
   return (
     <Box
       sx={{
+        flex: 1,
         display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-        width: '100%',
-        maxWidth: '500px',
-        padding: 10,
-        boxShadow: '0 12px 30px rgba(0,0,0,.08)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 3,
+        color: '#333',
       }}
     >
-      <Box sx={{ textAlign: 'center', color: '#434655' }}>
-        <Typography sx={{ fontSize: '28px', fontWeight: 700 }}>
-          Criar conta
-        </Typography>
-        <Typography color="text.secondary" textAlign="center" mb={2}>
-          Preencha os dados para criar sua conta.
-        </Typography>
-      </Box>
       <Box
         sx={{
+          height: '550px',
+          width: '100%',
+          maxWidth: 480,
           display: 'flex',
           flexDirection: 'column',
-          maxWidth: '500px',
-          gap: 3,
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 2,
+          padding: '40px',
         }}
       >
+        <HeaderForm
+          title="Criar conta"
+          subtitle="Preencha os dados para criar sua conta."
+        />
+
         <form
           style={{
             width: '100%',
@@ -103,39 +106,13 @@ export default function RegisterForm() {
               marginTop: '20px',
             }}
           >
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{
-                maxWidth: '250px',
-                textTransform: 'uppercase',
-                fontWeight: 600,
-              }}
-            >
-              Cadastrar
-            </Button>
+            <CustomButton type="submit">Cadastrar</CustomButton>
           </Box>
-
-          <Box
-            mt={2}
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Typography color="text.secondary">Já tem uma conta?</Typography>
-            <Link
-              href={'/login'}
-              style={{
-                color: '#004AC6',
-                fontWeight: 500,
-                textDecoration: 'none',
-              }}
-            >
-              Entrar no sistema
-            </Link>
-          </Box>
+          <FormFooterLink
+            href={'/login'}
+            text="Já tem uma conta?"
+            textLink="Entrar no sistema"
+          />
         </form>
       </Box>
     </Box>

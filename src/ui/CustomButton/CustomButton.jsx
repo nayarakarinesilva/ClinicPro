@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React from 'react';
 
-const CustomButton = ({ onClick, text, type }) => {
+const CustomButton = ({ onClick, children, type }) => {
   return (
     <Button
       variant="contained"
@@ -9,14 +9,18 @@ const CustomButton = ({ onClick, text, type }) => {
       type={type}
       fullWidth
       sx={{
-        py: 1.2,
         fontWeight: 600,
+        fontSize:"16px",
         textTransform: 'none',
-        background: '#004AC6',
-        mt: 1,
+        background: 'primary.main',
+        textTransform: 'uppercase',
+        mt:1,
+        mb:1,
+        minHeight:"45px",
+        color:"text.default"
       }}
     >
-      {text}
+      {children}
     </Button>
   );
 };

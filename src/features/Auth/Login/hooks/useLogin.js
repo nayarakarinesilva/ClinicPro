@@ -26,13 +26,13 @@ export const useLogin = () => {
       return 'Senha incorreta';
     }
 
-    return true;
+    return user;
   }
 
   const handleLogin = (data) => {
     const user = login(data.email, data.password);
 
-    if (user === true) {
+    if (user) {
       setUser(user);
       router.push('/painel');
     } else {

@@ -1,9 +1,14 @@
+'use client';
+
 import { formatFullDate } from '@/helpers/dateHelper';
+import { useAuthStore } from '@/store/useAuthStore';
 import { Avatar, Box, Button } from '@mui/material';
 import Link from 'next/link';
 
 export default function HeaderDashboard() {
   const today = formatFullDate();
+  const user = useAuthStore((state) => state.user);
+  console.log(user?.name);
 
   return (
     <Box
@@ -28,7 +33,7 @@ export default function HeaderDashboard() {
           padding: 1,
         }}
       >
-        Nayara
+        {user?.name}
         <Avatar sx={{ bgcolor: 'primary.main' }}>NK</Avatar>
       </Box>
       <Button>

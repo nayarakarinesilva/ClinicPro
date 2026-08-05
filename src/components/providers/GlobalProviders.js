@@ -5,7 +5,7 @@ import { theme } from '@/theme/theme';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import { CssBaseline } from '@mui/material';
 
-export default function Providers({ children }) {
+export default function GlobalProviders({ children }) {
   return (
     <AppRouterCacheProvider>
       <ThemeProvider theme={theme}>

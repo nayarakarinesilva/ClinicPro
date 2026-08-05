@@ -1,18 +1,7 @@
-import { Geist, Geist_Mono } from 'next/font/google';
-// import './globals.css';
-import Providers from './providers';
+
+import GlobalProviders from '../components/providers/GlobalProviders';
 import Footer from '@/shared/Footer/Footer';
 import { Box } from '@mui/material';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 export const metadata = {
   title: 'ClinicPro',
@@ -26,10 +15,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="pt-BR"
-      className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <body>
-        <Providers>
+        <GlobalProviders>
           <Box
             sx={{
               minHeight: '100vh',
@@ -43,7 +31,7 @@ export default function RootLayout({ children }) {
 
             <Footer />
           </Box>
-        </Providers>
+        </GlobalProviders>
       </body>
     </html>
   );
