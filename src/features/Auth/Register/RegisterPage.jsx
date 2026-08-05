@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import RegisterForm from './components/RegisterForm';
+import AuthLayout from '@/features/Auth/components/AuthLayout/AuthLayout';
 
 export default function RegisterPage() {
   return (
@@ -8,21 +9,11 @@ export default function RegisterPage() {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        mt: 6,
       }}
     >
-      <Box
-        component="main"
-        sx={{
-          flex: 1,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          bgcolor: '#fff',
-        }}
-      >
+      <AuthLayout>
         <RegisterForm />
-      </Box>
+      </AuthLayout>
     </Box>
   );
 }

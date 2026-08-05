@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import Input from '@/ui/Input/Input';
 import CustomButton from '@/ui/CustomButton/CustomButton';
-import Link from 'next/link';
 import { useLogin } from '../hooks/useLogin';
+import HeaderForm from '../../components/HeaderForm/HeaderForm';
+import FormFooterLink from '../../components/FormFooterLink/FormFooterLink';
 
 export default function LoginForm() {
   const { register, handleSubmit, handleLogin, errors } = useLogin();
@@ -34,13 +35,10 @@ export default function LoginForm() {
           padding: '40px',
         }}
       >
-        <Box sx={{ color: '#434655' }}>
-          <Typography sx={{ fontSize: '28px', fontWeight: 700 }}>
-            Entrar no Sistema
-          </Typography>
-
-          <Typography>Acesse seu painel administrativo</Typography>
-        </Box>
+        <HeaderForm
+          title="Entrar no Sistema"
+          subtitle="Acesse seu painel administrativo"
+        />
 
         <form
           style={{
@@ -79,27 +77,14 @@ export default function LoginForm() {
             error={!!errors.password}
             helperText={errors.password?.message}
           />
-          <CustomButton text="Entrar na Plataforma" type="submit" />
-          <Box
-            mt={2}
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Typography color="text.secondary">Não tem conta?</Typography>
-            <Link
-              href={'/cadastro'}
-              style={{
-                color: '#004AC6',
-                fontWeight: 500,
-                textDecoration: 'none',
-              }}
-            >
-              Criar conta
-            </Link>
-          </Box>
+
+          <CustomButton type="submit">Entrar</CustomButton>
+
+          <FormFooterLink
+            href={'/cadastro'}
+            text="Não tem conta?"
+            textLink="Criar conta"
+          />
         </form>
       </Box>
     </Box>

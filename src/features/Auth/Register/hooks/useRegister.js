@@ -1,5 +1,7 @@
 'use client';
+
 import { useAuthStore } from '@/store/useAuthStore';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 export const useRegister = () => {
@@ -12,6 +14,7 @@ export const useRegister = () => {
 
   const registerUser = useAuthStore((state) => state.register);
   const users = useAuthStore((state) => state.users);
+  const router = useRouter();
 
   const handleRegister = (data) => {
     if (data.email !== data.confirmEmail) {
@@ -38,8 +41,10 @@ export const useRegister = () => {
     registerUser(user);
 
     alert('Cadastro realizado com sucesso!');
-    
+
     reset();
+
+    router.push('/login');
     console.log(data);
   };
 
