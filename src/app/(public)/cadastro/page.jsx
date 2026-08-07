@@ -1,5 +1,6 @@
-import RegisterPage from '@/features/Auth/Register/RegisterPage';
+import AuthPages from '@/features/Auth/AuthPages';
+import RegisterForm from '@/features/Auth/Register/RegisterForm';
 
 export default function Cadastro() {
-  return <RegisterPage />;
+  return <AuthPages formComponent={<RegisterForm />} />;
 }

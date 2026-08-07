@@ -10,7 +10,7 @@ import { NextResponse } from 'next/server';
 const publicRoutes = [
   { path: '/login', whenAuthenticated: 'redirect' },
   { path: '/cadastro', whenAuthenticated: 'redirect' },
-  { path: '/painel', whenAuthenticated: 'next' },
+  // { path: '/painel', whenAuthenticated: 'next' },
 ];
 
 // Rota para onde o usuário vai quando tentar acessar algo sem estar logado
@@ -51,7 +51,7 @@ export function middleware(request) {
     publicRoute.whenAuthenticated === 'redirect'
   ) {
     const redirectUrl = request.nextUrl.clone();
-    redirectUrl.pathname = '/';
+    redirectUrl.pathname = '/painel';
 
     return NextResponse.redirect(redirectUrl);
   }
@@ -84,6 +84,6 @@ export const config = {
       - _next/image -> otimização de imagens
       - favicon.ico -> ícone do site
     */
-    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 };
