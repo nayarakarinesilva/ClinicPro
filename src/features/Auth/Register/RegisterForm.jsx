@@ -1,14 +1,15 @@
 'use client';
 
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
+import { useRegister } from './hooks/useRegister';
 import Input from '@/ui/Input/Input';
 import CustomButton from '@/ui/CustomButton/CustomButton';
-import Link from 'next/link';
-import { useLogin } from '../hooks/useLogin';
+import HeaderForm from '../components/HeaderForm/HeaderForm';
+import FormFooterLink from '../components/FormFooterLink/FormFooterLink';
 
-export default function LoginForm() {
-  const { register, handleSubmit, handleLogin, errors } = useLogin();
+export default function RegisterForm() {
+  const { register, handleSubmit, handleRegister, errors } = useRegister();
 
   return (
     <Box
@@ -34,23 +35,32 @@ export default function LoginForm() {
           padding: '40px',
         }}
       >
-        <Box sx={{ color: '#434655' }}>
-          <Typography sx={{ fontSize: '28px', fontWeight: 700 }}>
-            Entrar no Sistema
-          </Typography>
+        <HeaderForm
+          title="Criar conta"
+          subtitle="Preencha os dados para criar sua conta."
+        />
 
-          <Typography>Acesse seu painel administrativo</Typography>
-        </Box>
-
-        <form
+        <Stack
+          component="form"
+          noValidate
           style={{
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
             gap: 3,
           }}
-          onSubmit={handleSubmit(handleLogin)}
+          onSubmit={handleSubmit(handleRegister)}
         >
+          <Input
+            {...register('name', {
+              required: 'Nome é obrigatório',
+            })}
+            label="Nome"
+            type="text"
+            placeholder={'Nome'}
+            error={!!errors.name}
+            helperText={errors.name?.message}
+          />
           <Input
             {...register('email', {
               required: 'E-mail é obrigatório',
@@ -59,11 +69,21 @@ export default function LoginForm() {
                 message: 'Digite um e-mail válido',
               },
             })}
-            label="E-mail corporativo"
+            label="E-mail"
             type="email"
-            fullWidth
+            placeholder={'E-mail'}
             error={!!errors.email}
             helperText={errors.email?.message}
+          />
+          <Input
+            {...register('confirmEmail', {
+              required: 'Confirmação do e-mail é obrigatória',
+            })}
+            label="Confirmar e-mail"
+            type="email"
+            placeholder={'Cofirme e-mail'}
+            error={!!errors.confirmEmail}
+            helperText={errors.confirmEmail?.message}
           />
           <Input
             {...register('password', {
@@ -75,32 +95,27 @@ export default function LoginForm() {
             })}
             label="Senha"
             type="password"
-            fullWidth
+            placeholder="Senha"
             error={!!errors.password}
             helperText={errors.password?.message}
           />
-          <CustomButton text="Entrar na Plataforma" type="submit" />
+
           <Box
-            mt={2}
             sx={{
               display: 'flex',
-              flexDirection: 'column',
               alignItems: 'center',
+              justifyContent: 'center',
+              marginTop: '20px',
             }}
           >
-            <Typography color="text.secondary">Não tem conta?</Typography>
-            <Link
-              href={'/cadastro'}
-              style={{
-                color: '#004AC6',
-                fontWeight: 500,
-                textDecoration: 'none',
-              }}
-            >
-              Criar conta
-            </Link>
+            <CustomButton type="submit">Cadastrar</CustomButton>
           </Box>
-        </form>
+          <FormFooterLink
+            href={'/login'}
+            text="Já tem uma conta?"
+            textLink="Entrar no sistema"
+          />
+        </Stack>
       </Box>
     </Box>
   );

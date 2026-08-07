@@ -15,10 +15,10 @@ const Input = ({
   ...props
 }) => {
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', mb:1 }}>
       <Typography
         sx={{
-          color: '#004AC6',
+          color: 'primary.main',
           fontWeight: 600,
           fontSize: '14px',
         }}
@@ -40,7 +40,7 @@ const Input = ({
       />
 
       {msgError && (
-        <Typography sx={{ color: 'red', fontSize: '12px' }}>
+        <Typography sx={{ color: 'error.main', fontSize: '12px' }}>
           {msgError}
         </Typography>
       )}
