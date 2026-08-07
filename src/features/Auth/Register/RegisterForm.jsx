@@ -1,12 +1,12 @@
 'use client';
 
-import { Box } from '@mui/material';
 import React from 'react';
+import { Box, Stack } from '@mui/material';
+import { useRegister } from './hooks/useRegister';
 import Input from '@/ui/Input/Input';
-import { useRegister } from '../hooks/useRegister';
 import CustomButton from '@/ui/CustomButton/CustomButton';
-import HeaderForm from '../../components/HeaderForm/HeaderForm';
-import FormFooterLink from '../../components/FormFooterLink/FormFooterLink';
+import HeaderForm from '../components/HeaderForm/HeaderForm';
+import FormFooterLink from '../components/FormFooterLink/FormFooterLink';
 
 export default function RegisterForm() {
   const { register, handleSubmit, handleRegister, errors } = useRegister();
@@ -40,7 +40,9 @@ export default function RegisterForm() {
           subtitle="Preencha os dados para criar sua conta."
         />
 
-        <form
+        <Stack
+          component="form"
+          noValidate
           style={{
             width: '100%',
             display: 'flex',
@@ -113,7 +115,7 @@ export default function RegisterForm() {
             text="Já tem uma conta?"
             textLink="Entrar no sistema"
           />
-        </form>
+        </Stack>
       </Box>
     </Box>
   );

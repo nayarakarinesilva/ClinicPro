@@ -3,11 +3,23 @@
 import { formatFullDate } from '@/helpers/dateHelper';
 import { useAuthStore } from '@/store/useAuthStore';
 import { Avatar, Box, Button } from '@mui/material';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function HeaderDashboard() {
   const today = formatFullDate();
+  const router = useRouter();
+
   const user = useAuthStore((state) => state.user);
+  const logout = useAuthStore((state) => state.logout);
+
+  const handleLogout = () => {
+    logout();
+    // Remove o cookie que o middleware verifica
+    document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+
+    router.push('/login');
+  };
+
   console.log(user?.name);
 
   return (
@@ -36,9 +48,7 @@ export default function HeaderDashboard() {
         {user?.name}
         <Avatar sx={{ bgcolor: 'primary.main' }}>NK</Avatar>
       </Box>
-      <Button>
-        <Link href={'/login'}>Sair</Link>
-      </Button>
+      <Button onClick={handleLogout}>Sair</Button>
     </Box>
   );
 }

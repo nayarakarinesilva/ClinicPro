@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import Input from '@/ui/Input/Input';
 import CustomButton from '@/ui/CustomButton/CustomButton';
-import { useLogin } from '../hooks/useLogin';
-import HeaderForm from '../../components/HeaderForm/HeaderForm';
-import FormFooterLink from '../../components/FormFooterLink/FormFooterLink';
+import { useLogin } from './hooks/useLogin';
+import HeaderForm from '../components/HeaderForm/HeaderForm';
+import FormFooterLink from '../components/FormFooterLink/FormFooterLink';
 
 export default function LoginForm() {
   const { register, handleSubmit, handleLogin, errors } = useLogin();
@@ -40,7 +40,9 @@ export default function LoginForm() {
           subtitle="Acesse seu painel administrativo"
         />
 
-        <form
+        <Stack
+          component="form"
+          noValidate
           style={{
             width: '100%',
             display: 'flex',
@@ -85,7 +87,7 @@ export default function LoginForm() {
             text="Não tem conta?"
             textLink="Criar conta"
           />
-        </form>
+        </Stack>
       </Box>
     </Box>
   );

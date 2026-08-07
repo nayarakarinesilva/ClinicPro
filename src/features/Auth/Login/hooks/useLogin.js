@@ -34,6 +34,8 @@ export const useLogin = () => {
 
     if (user) {
       setUser(user);
+      document.cookie = 'token=123456; path=/';
+
       router.push('/painel');
     } else {
       alert('E-mail ou senha incorretos');
