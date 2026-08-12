@@ -1,12 +1,10 @@
-import { Box, Typography } from '@mui/material';
+import Title from '@/components/Title/Title';
+import { Box } from '@mui/material';
 
 export default function Painel() {
   return (
-    <Box>
-      <Typography>Visão Geral do Dashboard</Typography>
-      <Typography>
-        Bem-vindo de volta! Aqui está o resumo da sua clínica hoje.
-      </Typography>
+    <Box x={{ padding: 2 }}>
+      <Title>Dashboard</Title>
     </Box>
   );
 }

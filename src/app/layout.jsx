@@ -1,4 +1,3 @@
-
 import GlobalProviders from '../components/providers/GlobalProviders';
 import Footer from '@/shared/Footer/Footer';
 import { Box } from '@mui/material';
@@ -13,9 +12,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="pt-BR"
-    >
+    <html lang="pt-BR">
       <body>
         <GlobalProviders>
           <Box

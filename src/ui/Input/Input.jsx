@@ -15,7 +15,7 @@ const Input = ({
   ...props
 }) => {
   return (
-    <Box sx={{ width: '100%', mb:1 }}>
+    <Box sx={{ width: '100%', mb: 1 }}>
       <Typography
         sx={{
           color: 'primary.main',

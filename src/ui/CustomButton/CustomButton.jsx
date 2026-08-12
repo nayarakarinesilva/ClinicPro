@@ -10,14 +10,14 @@ const CustomButton = ({ onClick, children, type }) => {
       fullWidth
       sx={{
         fontWeight: 600,
-        fontSize:"16px",
-        textTransform: 'none',
+        fontSize: '16px',
         background: 'primary.main',
         textTransform: 'uppercase',
-        mt:1,
-        mb:1,
-        minHeight:"45px",
-        color:"text.default"
+        borderRadius: '8px',
+        mt: 1,
+        mb: 1,
+        minHeight: '45px',
+        color: 'text.default',
       }}
     >
       {children}

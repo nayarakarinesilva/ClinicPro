@@ -1,9 +1,10 @@
-import { Box, Typography } from '@mui/material';
+import Title from '@/components/Title/Title';
+import { Box } from '@mui/material';
 
 export default function Consultas() {
   return (
-    <Box>
-      <Typography variant="h5">Consultas</Typography>
+    <Box x={{ padding: 2 }}>
+      <Title>Consultas</Title>
     </Box>
   );
 }

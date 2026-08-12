@@ -2,7 +2,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import AuthImage from '../AuthImage/AuthImage';
 
-const AuthLayout = ({children}) => {
+const AuthLayout = ({ children }) => {
   return (
     <Box
       component="main"
