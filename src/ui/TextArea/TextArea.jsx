@@ -1,15 +1,16 @@
-import { Box, TextField, Typography } from '@mui/material';
 import React from 'react';
+import { Box, TextField, Typography } from '@mui/material';
 
-const Input = ({
+const TextArea = ({
   type,
-  placeholder,
   value,
   label,
   name,
   msgError,
   error,
   helperText,
+  defaultValue,
+  placeholder,
   ...props
 }) => {
   return (
@@ -27,17 +28,19 @@ const Input = ({
       <TextField
         {...props}
         type={type}
+        defaultValue={defaultValue}
         placeholder={placeholder}
-        value={value}
         name={name}
+        error={error}
+        helperText={helperText}
+        multiline
+        rows={4}
         sx={{
           width: '100%',
           '& textarea::placeholder': {
             color: 'text.secondary',
           },
         }}
-        error={error}
-        helperText={helperText}
       />
 
       {msgError && (
@@ -49,4 +52,4 @@ const Input = ({
   );
 };
 
-export default Input;
+export default TextArea;

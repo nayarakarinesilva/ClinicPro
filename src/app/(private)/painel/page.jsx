@@ -1,10 +1,22 @@
 import Title from '@/components/Title/Title';
-import { Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 
 export default function Painel() {
   return (
-    <Box x={{ padding: 2 }}>
-      <Title>Dashboard</Title>
+    <Box sx={{ padding: 2 }}>
+      <Stack
+        spacing={1}
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <Box>
+          <Title>Dashboard</Title>
+        </Box>
+      </Stack>
     </Box>
   );
 }
