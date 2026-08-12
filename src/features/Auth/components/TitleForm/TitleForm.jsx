@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-const HeaderForm = ({ title, subtitle }) => {
+const TitleForm = ({ title, subtitle }) => {
   return (
     <Box sx={{ textAlign: 'center'}}>
       <Typography sx={{ fontSize: '28px', fontWeight: 700, color: 'primary.main'  }}>
@@ -12,4 +12,4 @@ const HeaderForm = ({ title, subtitle }) => {
   );
 };
 
-export default HeaderForm;
+export default TitleForm;

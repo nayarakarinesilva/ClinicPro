@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
-export default function AuthHeader() {
+export default function HeaderAuth() {
   return (
     <Box
       sx={{
@@ -16,11 +16,7 @@ export default function AuthHeader() {
         borderBottom: '1px solid #e5e7eb',
       }}
     >
-      {/* 
-      O priority fala para o Next:
-      "Essa imagem é importante, carregue logo no início."
-      */}
-      <Image priority src="/logo.svg" alt="Logo" width={30} height={30} />
+      <Image loading='eager' src="/logo.svg" alt="Logo" width={30} height={30} />
 
       <Typography
         sx={{
