@@ -7,9 +7,13 @@ export const theme = createTheme({
     },
     text: {
       default: '#FFFFFF',
+      main: '#3B6FC4',
       primary: '#1F2937',
       secondary: '#434655',
       muted: '#6B7280',
+    },
+    border: {
+      default: '#C3C6D6',
     },
     background: {
       default: '#FFFFFF',

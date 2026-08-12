@@ -1,4 +1,4 @@
-import Header from '@/features/Auth/components/Header/Header';
+import Header from '@/ui/Header';
 
 export default function LayoutPublic({ children }) {
   return (
