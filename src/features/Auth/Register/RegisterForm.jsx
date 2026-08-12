@@ -4,7 +4,7 @@ import React from 'react';
 import { Box, Stack } from '@mui/material';
 import { useRegister } from './hooks/useRegister';
 import Input from '@/ui/Input/Input';
-import CustomButton from '@/ui/CustomButton/CustomButton';
+import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
 import HeaderForm from '../components/HeaderForm/HeaderForm';
 import FormFooterLink from '../components/FormFooterLink/FormFooterLink';
 

@@ -2,8 +2,9 @@
 
 import { formatFullDate } from '@/helpers/dateHelper';
 import { useAuthStore } from '@/store/useAuthStore';
-import { Avatar, Box, Button } from '@mui/material';
+import { Avatar, Box, Button, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 export default function HeaderDashboard() {
   const today = formatFullDate();
@@ -20,35 +21,55 @@ export default function HeaderDashboard() {
     router.push('/login');
   };
 
-  console.log(user?.name);
+  const userNameAvatar = user?.name.charAt(0).toUpperCase() ?? '';
+  console.log(userNameAvatar);
 
   return (
     <Box
       sx={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
         gap: 2,
         borderBottom: '1px solid',
         borderColor: 'divider',
         padding: 1,
       }}
     >
-      {today}
-      <Box
+      <Typography sx={{ color: 'text.secondary' }}>
+        Seja bem vindo(a): {user?.name}
+      </Typography>
+      <Stack
         sx={{
           display: 'flex',
+          flexDirection: 'row',
           alignItems: 'center',
-          gap: 1,
-          borderLeft: '1px solid',
-          borderColor: 'divider',
-          padding: 1,
+          justifyContent: 'space-between',
         }}
       >
-        {user?.name}
-        <Avatar sx={{ bgcolor: 'primary.main' }}>NK</Avatar>
-      </Box>
-      <Button onClick={handleLogout}>Sair</Button>
+        <Box>
+          {' '}
+          <Typography sx={{ color: 'text.muted', mr: 3 }}>{today}</Typography>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 1,
+            borderLeft: '1px solid',
+            borderColor: 'divider',
+            padding: 1,
+          }}
+        >
+          {user?.name && (
+            <Avatar sx={{ bgcolor: 'primary.main' }}>{userNameAvatar}</Avatar>
+          )}
+          <Button onClick={handleLogout}>
+            <ExitToAppIcon sx={{ fontSize: 30 }} />
+          </Button>
+        </Box>
+      </Stack>
     </Box>
   );
 }
