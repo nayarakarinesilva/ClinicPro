@@ -17,7 +17,7 @@ const TextArea = ({
     <Box sx={{ width: '100%', mb: 1 }}>
       <Typography
         sx={{
-          color: 'text.primary',
+          color: 'text.main',
           fontWeight: 600,
           fontSize: '14px',
         }}

@@ -5,7 +5,7 @@ import { Box, Stack } from '@mui/material';
 import { useRegister } from './hooks/useRegister';
 import Input from '@/ui/Input/Input';
 import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
-import HeaderForm from '../components/HeaderForm/HeaderForm';
+import TitleForm from '../components/TitleForm/TitleForm';
 import FormFooterLink from '../components/FormFooterLink/FormFooterLink';
 
 export default function RegisterForm() {
@@ -35,7 +35,7 @@ export default function RegisterForm() {
           padding: '40px',
         }}
       >
-        <HeaderForm
+        <TitleForm
           title="Criar conta"
           subtitle="Preencha os dados para criar sua conta."
         />
