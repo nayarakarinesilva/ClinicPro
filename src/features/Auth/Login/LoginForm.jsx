@@ -5,7 +5,7 @@ import { Box, Stack } from '@mui/material';
 import Input from '@/ui/Input/Input';
 import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
 import { useLogin } from './hooks/useLogin';
-import HeaderForm from '../components/HeaderForm/HeaderForm';
+import TitleForm from '../components/TitleForm/TitleForm';
 import FormFooterLink from '../components/FormFooterLink/FormFooterLink';
 
 export default function LoginForm() {
@@ -35,7 +35,7 @@ export default function LoginForm() {
           padding: '40px',
         }}
       >
-        <HeaderForm
+        <TitleForm
           title="Entrar no Sistema"
           subtitle="Acesse seu painel administrativo"
         />
