@@ -1,22 +1,17 @@
+'use client';
 import React from 'react';
 import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
-import {
-  Box,
-  InputAdornment,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Box, InputAdornment, Stack, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
+import PatientsTable from './PatientsTable';
 
-const PatientsList = ({ setViewMode }) => {
+const PatientsList = () => {
   const listPatients = usePatientsStore((state) => state.patientsList);
 
   //Já lista os pacientes cadastrados
   console.log('aqui pacientes', listPatients);
-  
+
   return (
     <Stack sx={{ pt: 2 }}>
       <Box
@@ -48,48 +43,10 @@ const PatientsList = ({ setViewMode }) => {
         </Box>
 
         <Box>
-          <CustomButton onClick={() => setViewMode('create')}>
-            + Novo Paciente
-          </CustomButton>
+          <CustomButton href={'/pacientes/novo'}>+ Novo Paciente</CustomButton>
         </Box>
       </Box>
-      <Paper
-        variant="outlined"
-        sx={{
-          width: '100%',
-          height: 500,
-          borderColor: 'border.default',
-          backgroundColor: 'background.default',
-          borderRadius: 2,
-          boxShadow: 'none',
-        }}
-      >
-        <Box
-          sx={{
-            p: 2,
-            borderBottom: '1px solid',
-            borderBottomColor: 'border.default',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          <Typography variant="h6" sx={{ color: 'text.secondary' }}>
-            Listagem de Pacientes
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'column',
-          }}
-        >
-          Tabela com pacientes cadastrados
-        </Box>
-      </Paper>
+      <PatientsTable />
     </Stack>
   );
 };

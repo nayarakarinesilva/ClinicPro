@@ -1,9 +1,12 @@
-import { Button } from '@mui/material';
 import React from 'react';
+import NextLink from 'next/link';
+import { Button } from '@mui/material';
 
-const CustomButton = ({ onClick, children, type }) => {
+const CustomButton = ({ onClick, children, type, href }) => {
   return (
     <Button
+      component={href ? NextLink : undefined}
+      href={href}
       variant="contained"
       onClick={onClick}
       type={type}
