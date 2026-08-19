@@ -19,10 +19,10 @@ export const usePatientsStore = create(
               : patient
           );
 
-          console.log('ANTES:', state.patientsList);
-          console.log('ID EDITADO:', id);
-          console.log('DATA NOVA:', data);
-          console.log('DEPOIS:', updatedList);
+          console.log('EDITANDO:');
+          console.log('ID:', id);
+          console.log('DATA:', data);
+          console.log('RESULTADO:', updatedList);
 
           return {
             patientsList: updatedList,

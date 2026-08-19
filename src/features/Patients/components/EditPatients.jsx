@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Box, Paper, Stack, Typography, Divider } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LinkButton from '@/ui/Buttons/LinkButton/LinkButton';
@@ -16,28 +16,23 @@ const EditPatients = () => {
   const { register, handleSubmit, errors, handleEditPatient, reset } =
     usePatients();
   const patientsList = usePatientsStore((state) => state.patientsList);
-
+  const initialized = useRef(false);
   const { id } = useParams();
   const patientId = Number(id);
 
-  console.log('id editar: ', id);
-
   useEffect(() => {
-    const patient = patientsList.find((patient) => patient.id === patientId);
-    console.log('patient editar: ', patient);
+    if (initialized.current) return;
+
+    const patient = patientsList.find(
+      (patient) => Number(patient.id) === patientId
+    );
 
     if (patient) {
-      reset({
-        name: patient.name,
-        date_birth: patient.date_birth,
-        document_cpf: patient.document_cpf,
-        phone: patient.phone,
-        email: patient.email,
-        text_notes: patient.text_notes,
-      });
+      reset(patient);
+      initialized.current = true;
     }
   }, [patientId, patientsList, reset]);
-
+  
   return (
     <Box>
       <LinkButton href="/pacientes" icon={ArrowBackIcon}>

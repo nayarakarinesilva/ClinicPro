@@ -59,9 +59,9 @@ export const usePatients = () => {
   const handleEditPatient = (id, data) => {
     editPatient(id, data);
 
-     console.log('ID:', id);
-  console.log('DATA:', data);
-  
+    console.log('ID:', id);
+    console.log('DATA QUE VEIO DO FORM:', data);
+
     alert('Paciente editado com sucesso!');
 
     router.push('/pacientes');
