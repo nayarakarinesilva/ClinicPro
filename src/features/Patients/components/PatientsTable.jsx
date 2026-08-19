@@ -14,6 +14,7 @@ import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import Link from 'next/link';
 
 const PatientsTable = () => {
   const listPatients = usePatientsStore((state) => state.patientsList);
@@ -44,8 +45,14 @@ const PatientsTable = () => {
                       <RemoveRedEyeIcon sx={{ color: 'primary.main' }} />
                     </Tooltip>{' '}
                     <Tooltip title="Editar paciente">
-                      <EditIcon />
-                    </Tooltip>{' '}
+                      <Link href={`/pacientes/${patient.id}/editar`}>
+                        <EditIcon
+                          sx={{
+                            cursor: 'pointer',
+                          }}
+                        />
+                      </Link>
+                    </Tooltip>
                     <Tooltip title="Deletar paciente">
                       <DeleteIcon sx={{ color: 'red' }} />
                     </Tooltip>{' '}

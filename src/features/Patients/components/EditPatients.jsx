@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Paper, Stack, Typography, Divider } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LinkButton from '@/ui/Buttons/LinkButton/LinkButton';
@@ -9,11 +9,34 @@ import TextArea from '@/ui/TextArea/TextArea';
 import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
 import OutlineButton from '@/ui/Buttons/OutlineButton/OutlineButton';
 import { usePatients } from '../hooks/usePatients';
+import { useParams } from 'next/navigation';
+import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
 
-const RegisterPatients = () => {
-  const { register, handleSubmit, handleAddPatients, errors } = usePatients();
-  const id = Math.floor(Math.random() * 1000);
-  console.log('id: ', id);
+const EditPatients = () => {
+  const { register, handleSubmit, errors, handleEditPatient, reset } =
+    usePatients();
+  const patientsList = usePatientsStore((state) => state.patientsList);
+
+  const { id } = useParams();
+  const patientId = Number(id);
+
+  console.log('id editar: ', id);
+
+  useEffect(() => {
+    const patient = patientsList.find((patient) => patient.id === patientId);
+    console.log('patient editar: ', patient);
+
+    if (patient) {
+      reset({
+        name: patient.name,
+        date_birth: patient.date_birth,
+        document_cpf: patient.document_cpf,
+        phone: patient.phone,
+        email: patient.email,
+        text_notes: patient.text_notes,
+      });
+    }
+  }, [patientId, patientsList, reset]);
 
   return (
     <Box>
@@ -54,7 +77,9 @@ const RegisterPatients = () => {
             <Stack
               component="form"
               noValidate
-              onSubmit={handleSubmit(handleAddPatients)}
+              onSubmit={handleSubmit((data) =>
+                handleEditPatient(patientId, data)
+              )}
               style={{
                 width: '100%',
                 display: 'flex',
@@ -152,4 +177,4 @@ const RegisterPatients = () => {
   );
 };
 
-export default RegisterPatients;
+export default EditPatients;
