@@ -1,7 +1,15 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import { Box, Paper, Stack, Typography, Divider } from '@mui/material';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Box,
+  Paper,
+  Stack,
+  Typography,
+  Divider,
+  Modal,
+  Button,
+} from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LinkButton from '@/ui/Buttons/LinkButton/LinkButton';
 import Input from '@/ui/Input/Input';
@@ -11,12 +19,19 @@ import OutlineButton from '@/ui/Buttons/OutlineButton/OutlineButton';
 import { usePatients } from '../hooks/usePatients';
 import { useParams } from 'next/navigation';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
+import { useRouter } from 'next/navigation';
+import CustomModal from '@/ui/CustomModal/CustomModal';
 
 const EditPatients = () => {
   const { register, handleSubmit, errors, handleEditPatient, reset } =
     usePatients();
+
+  const [isEditSuccessModalOpen, setIsEditSuccessModalOpen] = useState(false);
+
   const patientsList = usePatientsStore((state) => state.patientsList);
   const initialized = useRef(false);
+  const router = useRouter();
+
   const { id } = useParams();
   const patientId = Number(id);
 
@@ -32,9 +47,32 @@ const EditPatients = () => {
       initialized.current = true;
     }
   }, [patientId, patientsList, reset]);
-  
+
+  const handleSubmitEdit = (data) => {
+    handleEditPatient(patientId, data);
+    setIsEditSuccessModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsEditSuccessModalOpen(false);
+    router.push('/pacientes');
+  };
+
+  const handleClose = () => {
+    router.push('/pacientes');
+  };
+
   return (
     <Box>
+      <CustomModal
+        open={isEditSuccessModalOpen}
+        onClose={handleCloseModal}
+        title={'Edição concluída!'}
+        description={'Os dados do paciente foram atualizados com sucesso.'}
+      >
+        <CustomButton onClick={handleCloseModal}>Fechar</CustomButton>
+      </CustomModal>
+
       <LinkButton href="/pacientes" icon={ArrowBackIcon}>
         Voltar para pacientes
       </LinkButton>
@@ -72,9 +110,7 @@ const EditPatients = () => {
             <Stack
               component="form"
               noValidate
-              onSubmit={handleSubmit((data) =>
-                handleEditPatient(patientId, data)
-              )}
+              onSubmit={handleSubmit(handleSubmitEdit)}
               style={{
                 width: '100%',
                 display: 'flex',
@@ -161,8 +197,10 @@ const EditPatients = () => {
                   margin: '0 auto',
                 }}
               >
-                <CustomButton type="submit">Cadastrar</CustomButton>
-                <OutlineButton type="button">Cancelar</OutlineButton>
+                <CustomButton type="submit">Editar</CustomButton>
+                <OutlineButton onClick={handleClose} type="button">
+                  Cancelar
+                </OutlineButton>
               </Box>
             </Stack>
           </Box>

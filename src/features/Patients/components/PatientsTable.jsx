@@ -42,13 +42,28 @@ const PatientsTable = () => {
                 <TableCell>
                   <Box sx={{ display: 'flex', gap: 2, cursor: 'pointer' }}>
                     <Tooltip title="Visualizar paciente">
-                      <RemoveRedEyeIcon sx={{ color: 'primary.main' }} />
-                    </Tooltip>{' '}
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          padding: 1,
+                          borderRadius: 1,
+                          cursor: 'pointer',
+                          '&:hover': {
+                            backgroundColor: 'background.primary',
+                          },
+                        }}
+                      >
+                        <RemoveRedEyeIcon sx={{ color: 'primary.main' }} />
+                      </Box>
+                    </Tooltip>
                     <Tooltip title="Editar paciente">
                       <Link href={`/pacientes/${patient.id}/editar`}>
                         <EditIcon
                           sx={{
                             cursor: 'pointer',
+                            color: 'text.primary',
                           }}
                         />
                       </Link>

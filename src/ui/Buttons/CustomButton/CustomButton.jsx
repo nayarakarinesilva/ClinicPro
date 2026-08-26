@@ -13,7 +13,7 @@ const CustomButton = ({ onClick, children, type, href }) => {
       fullWidth
       sx={{
         fontWeight: 600,
-        fontSize: '16px',
+        fontSize: '15px',
         background: 'primary.main',
         textTransform: 'uppercase',
         borderRadius: '8px',
