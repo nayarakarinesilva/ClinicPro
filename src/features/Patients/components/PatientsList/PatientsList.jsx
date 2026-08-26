@@ -4,7 +4,7 @@ import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
 import { Box, InputAdornment, Stack, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
-import PatientsTable from './PatientsTable';
+import PatientsTable from '@/features/Patients/components/PatientsTable/PatientsTable';
 
 const PatientsList = () => {
   const listPatients = usePatientsStore((state) => state.patientsList);

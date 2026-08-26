@@ -8,7 +8,7 @@ import Input from '@/ui/Input/Input';
 import TextArea from '@/ui/TextArea/TextArea';
 import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
 import OutlineButton from '@/ui/Buttons/OutlineButton/OutlineButton';
-import { usePatients } from '../hooks/usePatients';
+import { usePatients } from '@/features/Patients/hooks/usePatients';
 
 const RegisterPatients = () => {
   const { register, handleSubmit, handleAddPatients, errors } = usePatients();

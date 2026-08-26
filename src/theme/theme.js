@@ -22,5 +22,13 @@ export const theme = createTheme({
       secondary: '#DBEAFE',
       active: '#DCFCE7',
     },
+    error: {
+      main: '#F54336',
+      light: '#FDE4E1',
+    },
+    success: {
+      main: '#47B881',
+      light: '#97D4B4',
+    },
   },
 });

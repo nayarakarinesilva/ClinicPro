@@ -1,25 +1,18 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import {
-  Box,
-  Paper,
-  Stack,
-  Typography,
-  Divider,
-  Modal,
-  Button,
-} from '@mui/material';
+import { useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
+
+import { Box, Paper, Stack, Typography, Divider } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LinkButton from '@/ui/Buttons/LinkButton/LinkButton';
 import Input from '@/ui/Input/Input';
 import TextArea from '@/ui/TextArea/TextArea';
 import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
 import OutlineButton from '@/ui/Buttons/OutlineButton/OutlineButton';
-import { usePatients } from '../hooks/usePatients';
-import { useParams } from 'next/navigation';
+import { usePatients } from '@/features/Patients/hooks/usePatients';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
-import { useRouter } from 'next/navigation';
 import CustomModal from '@/ui/CustomModal/CustomModal';
 
 const EditPatients = () => {
