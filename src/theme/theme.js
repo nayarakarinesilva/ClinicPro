@@ -13,7 +13,7 @@ export const theme = createTheme({
       muted: '#6B7280',
     },
     border: {
-      default: '#C3C6D6',
+      default: '#cfd2e4',
     },
     background: {
       default: '#FFFFFF',
@@ -21,6 +21,14 @@ export const theme = createTheme({
       primary: '#D5E4F8',
       secondary: '#DBEAFE',
       active: '#DCFCE7',
+    },
+    error: {
+      main: '#F54336',
+      light: '#FDE4E1',
+    },
+    success: {
+      main: '#47B881',
+      light: '#97D4B4',
     },
   },
 });

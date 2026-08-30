@@ -20,3 +20,15 @@ export function formatFullDate(date = new Date()) {
 
   return dateParts.join(' ');
 }
+
+export function formatedDate(date) {
+  return date?.split('-').reverse().join('/');
+}
+
+export function getBirth(date) {
+  if (!date) return '';
+  const format = date?.split('-').reverse();
+  const yearBirth = format[2];
+  const birth = new Date().getFullYear() - yearBirth;
+  return birth;
+}
