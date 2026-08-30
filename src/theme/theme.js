@@ -13,7 +13,7 @@ export const theme = createTheme({
       muted: '#6B7280',
     },
     border: {
-      default: '#C3C6D6',
+      default: '#cfd2e4',
     },
     background: {
       default: '#FFFFFF',

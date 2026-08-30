@@ -16,7 +16,7 @@ const publicRoutes = [
 // Rota para onde o usuário vai quando tentar acessar algo sem estar logado
 const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = '/login';
 
-export function middleware(request) {
+export function proxy(request) {
   // Pega a rota atual que o usuário está tentando acessar
   const path = request.nextUrl.pathname;
 
