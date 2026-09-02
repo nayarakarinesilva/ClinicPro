@@ -2,7 +2,14 @@ import React from 'react';
 import NextLink from 'next/link';
 import { Button } from '@mui/material';
 
-const CustomButton = ({ onClick, children, type, href }) => {
+const CustomButton = ({
+  onClick,
+  children,
+  type,
+  href,
+  background = 'primary.main',
+  color = 'text.default',
+}) => {
   return (
     <Button
       component={href ? NextLink : undefined}
@@ -14,13 +21,13 @@ const CustomButton = ({ onClick, children, type, href }) => {
       sx={{
         fontWeight: 600,
         fontSize: '15px',
-        background: 'primary.main',
+        backgroundColor: background,
+        color: color,
         textTransform: 'uppercase',
         borderRadius: '8px',
         mt: 1,
         mb: 1,
-        minHeight: '45px',
-        color: 'text.default',
+        minHeight: '40px',
       }}
     >
       {children}
