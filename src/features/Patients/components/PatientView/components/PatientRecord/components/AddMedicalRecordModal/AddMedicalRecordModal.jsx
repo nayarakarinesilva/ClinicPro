@@ -1,5 +1,6 @@
 import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
 import Input from '@/ui/Input/Input';
+import TextArea from '@/ui/TextArea/TextArea';
 import {
   Box,
   Dialog,
@@ -10,7 +11,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 
-const AddPatientRecordModal = ({ openModal, onClose }) => {
+const AddMedicalRecordModal = ({ openModal, onClose }) => {
   return (
     <Dialog
       open={openModal}
@@ -40,12 +41,10 @@ const AddPatientRecordModal = ({ openModal, onClose }) => {
             // error={!!errors.confirmEmail}
             // helperText={errors.confirmEmail?.message}
           />
-          <Input
-            label="Observações"
-            type="text"
+          <TextArea
+            label={'Observações'}
+            type={'text'}
             placeholder={'Anotações clínicas...'}
-            // error={!!errors.confirmEmail}
-            // helperText={errors.confirmEmail?.message}
           />
         </form>
       </DialogContent>
@@ -65,4 +64,4 @@ const AddPatientRecordModal = ({ openModal, onClose }) => {
   );
 };
 
-export default AddPatientRecordModal;
+export default AddMedicalRecordModal;

@@ -5,13 +5,14 @@ import { Box, Divider, Paper, Typography } from '@mui/material';
 import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
 import { useParams } from 'next/navigation';
 import { usePatient } from '@/features/Patients/hooks/usePatient';
-import AddPatientRecordModal from './components/AddPatientRecordModal/AddPatientRecordModal';
+import AddMedicalRecordModal from './components/AddMedicalRecordModal/AddMedicalRecordModal';
 
 const PatientRecord = () => {
   const { id } = useParams();
   const patient = usePatient(id);
   const [openModal, setOpenModal] = useState(false);
-
+  console.log('patient', patient);
+  
   const handleCloseModal = () => {
     setOpenModal(false);
   };
@@ -67,7 +68,7 @@ const PatientRecord = () => {
         </Box>
       </Box>
 
-      <AddPatientRecordModal openModal={openModal} onClose={handleCloseModal} />
+      <AddMedicalRecordModal openModal={openModal} onClose={handleCloseModal} />
     </Paper>
   );
 };
