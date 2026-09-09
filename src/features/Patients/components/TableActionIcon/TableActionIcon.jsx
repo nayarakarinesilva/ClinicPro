@@ -65,7 +65,9 @@ const TableActionIcon = ({ patient }) => {
             },
           }}
         >
-          <DeleteIcon sx={{ color: 'error.main' }} />
+          <Link href={`/pacientes/${patient.id}/deletar`}>
+            <DeleteIcon sx={{ color: 'error.main' }} />
+          </Link>
         </Box>
       </Tooltip>
     </>

@@ -1,8 +1,8 @@
-import PatientDelete from '@/features/Patients/components/PatientDelete/PatientDelete';
+import DeletePatient from '@/features/Patients/components/DeletePatient/DeletePatient';
 import React from 'react';
 
 const page = () => {
-  return <PatientDelete />;
+  return <DeletePatient />;
 };
 
 export default page;

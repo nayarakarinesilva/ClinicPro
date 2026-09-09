@@ -9,13 +9,10 @@ import {
   TableRow,
   TableBody,
 } from '@mui/material';
-import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
 import TableActionIcon from '@/features/Patients/components/TableActionIcon/TableActionIcon';
 import { formatedDate } from '@/helpers/dateHelper';
 
-const PatientsTable = () => {
-  const listPatients = usePatientsStore((state) => state.patientsList);
-
+const PatientsTable = ({ patients }) => {
   return (
     <Box>
       <TableContainer component={Paper}>
@@ -37,7 +34,7 @@ const PatientsTable = () => {
           </TableHead>
 
           <TableBody>
-            {listPatients.map((patient, index) => (
+            {patients.map((patient, index) => (
               <TableRow key={index} hover role="checkbox">
                 <TableCell>{patient.name}</TableCell>
                 <TableCell>{patient.phone}</TableCell>

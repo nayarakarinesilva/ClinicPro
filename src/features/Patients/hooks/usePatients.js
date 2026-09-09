@@ -15,6 +15,7 @@ export const usePatients = () => {
   const addPatients = usePatientsStore((state) => state.addPatient);
   const ListPatients = usePatientsStore((state) => state.patientsList);
   const editPatient = usePatientsStore((state) => state.editPatient);
+  const deletePatient = usePatientsStore((state) => state.deletePatient);
 
   const router = useRouter();
 
@@ -63,11 +64,16 @@ export const usePatients = () => {
     // alert('Paciente editado com sucesso!');
   };
 
+  const handleDeletePatient = (id) => {
+    deletePatient(id);
+  };
+
   return {
     register,
     handleSubmit,
     handleAddPatients,
     handleEditPatient,
+    handleDeletePatient,
     errors,
     reset,
   };
