@@ -5,6 +5,7 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { Avatar, Box, Button, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { getAvatarInitial } from '@/helpers/userHelper';
 
 export default function HeaderDashboard() {
   const today = formatFullDate();
@@ -21,8 +22,7 @@ export default function HeaderDashboard() {
     router.push('/login');
   };
 
-  const userNameAvatar = user?.name.charAt(0).toUpperCase() ?? '';
-  console.log(userNameAvatar);
+  const userNameAvatar = getAvatarInitial(user?.name);
 
   return (
     <Box

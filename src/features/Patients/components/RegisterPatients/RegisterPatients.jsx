@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Box, Paper, Stack, Typography, Divider } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -6,14 +8,16 @@ import Input from '@/ui/Input/Input';
 import TextArea from '@/ui/TextArea/TextArea';
 import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
 import OutlineButton from '@/ui/Buttons/OutlineButton/OutlineButton';
-import { usePatients } from '../hooks/usePatients';
+import { usePatients } from '@/features/Patients/hooks/usePatients';
 
-const RegisterPatients = ({ setViewMode }) => {
+const RegisterPatients = () => {
   const { register, handleSubmit, handleAddPatients, errors } = usePatients();
+  const id = Math.floor(Math.random() * 1000);
+  console.log('id: ', id);
 
   return (
     <Box>
-      <LinkButton icon={ArrowBackIcon} onClick={() => setViewMode('list')}>
+      <LinkButton href="/pacientes" icon={ArrowBackIcon}>
         Voltar para pacientes
       </LinkButton>
       <Stack

@@ -14,10 +14,19 @@ export const usePatients = () => {
 
   const addPatients = usePatientsStore((state) => state.addPatient);
   const ListPatients = usePatientsStore((state) => state.patientsList);
+  const editPatient = usePatientsStore((state) => state.editPatient);
+  const deletePatient = usePatientsStore((state) => state.deletePatient);
 
   const router = useRouter();
 
   const handleAddPatients = (data) => {
+    let id = Math.floor(Math.random() * 1000);
+
+    //Se houver paciente com mesmo id, gerar outro
+    while (ListPatients.some((patient) => patient.id === id)) {
+      id = Math.floor(Math.random() * 1000);
+    }
+
     const hasPatient = ListPatients.some(
       (patient) => patient.document_cpf === data.document_cpf
     );
@@ -28,12 +37,14 @@ export const usePatients = () => {
     }
 
     const patient = {
+      id,
       name: data.name,
       date_birth: data.date_birth,
       document_cpf: data.document_cpf,
       phone: data.phone,
       email: data.email,
       text_notes: data.text_notes,
+      medicalRecord: [],
     };
 
     //Adicionar novo paciente
@@ -43,14 +54,27 @@ export const usePatients = () => {
 
     console.log('patient', patient);
 
-    // reset();
-    // router.push('pacientes');
+    reset();
+    router.push('/pacientes');
+  };
+
+  const handleEditPatient = (id, data) => {
+    editPatient(id, data);
+
+    // alert('Paciente editado com sucesso!');
+  };
+
+  const handleDeletePatient = (id) => {
+    deletePatient(id);
   };
 
   return {
     register,
     handleSubmit,
     handleAddPatients,
+    handleEditPatient,
+    handleDeletePatient,
     errors,
+    reset,
   };
 };
