@@ -24,6 +24,19 @@ export const usePatientsStore = create(
         });
       },
 
+      deletePatient: (id) => {
+        set((state) => {
+          // Cria uma nova lista sem o paciente informado
+          const updatedList = state.patientsList.filter(
+            (patient) => Number(patient.id) !== Number(id)
+          );
+          // Atualiza a lista de pacientes
+          return {
+            patientsList: updatedList,
+          };
+        });
+      },
+
       addMedicalRecord: (patientId, medicalRecord) => {
         set((state) => {
           // Percorre a lista de pacientes para encontrar o paciente pelo ID

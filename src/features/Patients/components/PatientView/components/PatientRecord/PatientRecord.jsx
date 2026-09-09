@@ -51,7 +51,7 @@ const PatientRecord = () => {
         >
           <Box>
             <Typography sx={{ color: 'text.primary', fontWeight: 600 }}>
-              Prontuário — {patient.medicalRecord?.length} registros
+              Prontuário — {patient?.medicalRecord?.length} registros
             </Typography>
           </Box>
           <Box
@@ -66,9 +66,9 @@ const PatientRecord = () => {
         </Box>
         <Divider sx={{ my: 1, mx: -2 }} />
         <Box sx={{ display: 'flex', gap: 2, flexDirection: 'column' }}>
-          {patient.medicalRecord?.map((user, index) => {
+          {patient?.medicalRecord?.map((user, index) => {
             return (
-              <Box Box key={user.id ?? index}>
+              <Box key={user.id ?? index}>
                 <Box
                   sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 1 }}
                 >
