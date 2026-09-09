@@ -6,13 +6,14 @@ import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
 import { useParams } from 'next/navigation';
 import { usePatient } from '@/features/Patients/hooks/usePatient';
 import AddMedicalRecordModal from './components/AddMedicalRecordModal/AddMedicalRecordModal';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 const PatientRecord = () => {
   const { id } = useParams();
   const patient = usePatient(id);
   const [openModal, setOpenModal] = useState(false);
   console.log('patient', patient);
-  
+
   const handleCloseModal = () => {
     setOpenModal(false);
   };
@@ -22,7 +23,8 @@ const PatientRecord = () => {
       variant="outlined"
       sx={{
         width: '100%',
-        height: '100%',
+        maxHeight: '480px',
+        overflowY: 'auto',
         border: 'none',
         backgroundColor: 'background.default',
         borderRadius: 2,
@@ -48,8 +50,8 @@ const PatientRecord = () => {
           }}
         >
           <Box>
-            <Typography>
-              Prontuários - (Colocar quantidade de prontuários )
+            <Typography sx={{ color: 'text.primary', fontWeight: 600 }}>
+              Prontuário — {patient.medicalRecord?.length} registros
             </Typography>
           </Box>
           <Box
@@ -63,12 +65,46 @@ const PatientRecord = () => {
           </Box>
         </Box>
         <Divider sx={{ my: 1, mx: -2 }} />
-        <Box>
-          <Typography>Aqui todos os prontuarios</Typography>
+        <Box sx={{ display: 'flex', gap: 2, flexDirection: 'column' }}>
+          {patient.medicalRecord?.map((user, index) => {
+            return (
+              <Box Box key={user.id ?? index}>
+                <Box
+                  sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 1 }}
+                >
+                  <FiberManualRecordIcon
+                    sx={{ color: 'primary.main', fontSize: '1rem' }}
+                  />
+                  <Box>
+                    <Box sx={{ display: 'flex', gap: 2 }}>
+                      <Typography
+                        sx={{ color: 'text.primary', fontWeight: 600 }}
+                      >
+                        {user.procedure} -
+                      </Typography>
+                      <Typography sx={{ color: 'text.muted' }}>
+                        {user.date}
+                      </Typography>
+                    </Box>
+                    <Box>
+                      <Typography sx={{ color: 'text.muted' }}>
+                        {user.observations}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+                <Divider sx={{ mx: -2 }} />
+              </Box>
+            );
+          })}
         </Box>
       </Box>
 
-      <AddMedicalRecordModal openModal={openModal} onClose={handleCloseModal} />
+      <AddMedicalRecordModal
+        openModal={openModal}
+        onClose={handleCloseModal}
+        patient={patient}
+      />
     </Paper>
   );
 };

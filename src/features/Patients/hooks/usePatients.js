@@ -43,7 +43,7 @@ export const usePatients = () => {
       phone: data.phone,
       email: data.email,
       text_notes: data.text_notes,
-      medicalRecords: [],
+      medicalRecord: [],
     };
 
     //Adicionar novo paciente

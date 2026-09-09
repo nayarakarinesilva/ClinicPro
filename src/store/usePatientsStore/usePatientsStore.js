@@ -35,7 +35,7 @@ export const usePatientsStore = create(
                 // Cria uma nova lista de prontuários
                 medicalRecord: [
                   // Mantém os prontuários que o paciente já possui
-                  ...patient.medicalRecord,
+                  ...(patient.medicalRecord || []),
                   // Adiciona o novo prontuário
                   medicalRecord,
                 ],

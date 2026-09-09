@@ -7,11 +7,17 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  IconButton,
   Typography,
 } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import React from 'react';
+import { useAddMedicalRecord } from './hooks/useAddMedicalRecord';
 
-const AddMedicalRecordModal = ({ openModal, onClose }) => {
+const AddMedicalRecordModal = ({ openModal, onClose, patient }) => {
+  const { handleSubmit, handleAddMedicalRecord, register, errors } =
+    useAddMedicalRecord(patient.id, onClose);
+
   return (
     <Dialog
       open={openModal}
@@ -21,45 +27,83 @@ const AddMedicalRecordModal = ({ openModal, onClose }) => {
       sx={{
         '& .MuiDialog-paper': {
           minHeight: '40vh',
+          borderRadius: '12px',
+          backgroundColor: 'background.default',
         },
       }}
     >
-      <DialogTitle sx={{ fontWeight: 600 }}>Adicionar Procedimento</DialogTitle>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          backgroundColor: 'background.paper',
+        }}
+      >
+        <DialogTitle sx={{ fontWeight: 600, color: 'text.secondary' }}>
+          Adicionar Procedimento
+        </DialogTitle>
+
+        <IconButton
+          edge="start"
+          color="inherit"
+          onClick={() => onClose()}
+          aria-label="close"
+          sx={{ marginRight: '20px', color: 'text.secondary' }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </Box>
       <DialogContent>
-        <form>
+        <form onSubmit={handleSubmit(handleAddMedicalRecord)}>
           <Input
+            {...register('date', {
+              required: 'Data é obrigatório',
+            })}
             label="Data"
             type="date"
+            required
             placeholder={'00/00/0000'}
-            // error={!!errors.confirmEmail}
-            // helperText={errors.confirmEmail?.message}
+            error={!!errors.date}
+            helperText={errors.date?.message}
           />
           <Input
+            {...register('procedure', {
+              required: 'Procedimento é obrigatório',
+            })}
             label="Procedimento"
             type="text"
+            required
             placeholder={'Ex: consulta clínica geral'}
-            // error={!!errors.confirmEmail}
-            // helperText={errors.confirmEmail?.message}
+            error={!!errors.procedure}
+            helperText={errors.procedure?.message}
           />
           <TextArea
+            {...register('observations', {
+              required: 'Observações são obrigatórias',
+            })}
             label={'Observações'}
             type={'text'}
+            required
             placeholder={'Anotações clínicas...'}
+            error={!!errors.observations}
+            helperText={errors.observations?.message}
           />
+          <DialogActions>
+            <Box sx={{ display: 'flex', gap: 2 }}>
+              <CustomButton
+                background="button.disabled"
+                color="text.secondary"
+                onClick={onClose}
+              >
+                Cancelar
+              </CustomButton>
+              <CustomButton type="submit">Salvar</CustomButton>
+            </Box>
+          </DialogActions>
         </form>
       </DialogContent>
-      <DialogActions>
-        <Box sx={{ display: 'flex', gap: 2 }}>
-          <CustomButton
-            background="button.disabled"
-            color="text.secondary"
-            onClick={onClose}
-          >
-            Cancelar
-          </CustomButton>
-          <CustomButton>Salvar</CustomButton>
-        </Box>
-      </DialogActions>
     </Dialog>
   );
 };

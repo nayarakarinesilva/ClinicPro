@@ -11,6 +11,7 @@ const TextArea = ({
   helperText,
   defaultValue,
   placeholder,
+  required,
   ...props
 }) => {
   return (
@@ -23,6 +24,12 @@ const TextArea = ({
         }}
       >
         {label}
+        {required && (
+          <Box component="span" sx={{ color: 'error.main' }}>
+            {' '}
+            *
+          </Box>
+        )}
       </Typography>
 
       <TextField
