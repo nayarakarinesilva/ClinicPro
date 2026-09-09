@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useParams } from 'next/navigation';
-
+import { useRouter, useParams } from 'next/navigation';
 import { Box, Paper, Stack, Typography, Divider } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LinkButton from '@/ui/Buttons/LinkButton/LinkButton';
