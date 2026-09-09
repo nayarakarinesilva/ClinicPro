@@ -10,6 +10,7 @@ const Input = ({
   msgError,
   error,
   helperText,
+  required,
   ...props
 }) => {
   return (
@@ -22,6 +23,12 @@ const Input = ({
         }}
       >
         {label}
+        {required && (
+          <Box component="span" sx={{ color: 'error.main' }}>
+            {' '}
+            *
+          </Box>
+        )}
       </Typography>
 
       <TextField

@@ -43,6 +43,7 @@ export const usePatients = () => {
       phone: data.phone,
       email: data.email,
       text_notes: data.text_notes,
+      medicalRecord: [],
     };
 
     //Adicionar novo paciente
@@ -60,7 +61,6 @@ export const usePatients = () => {
     editPatient(id, data);
 
     // alert('Paciente editado com sucesso!');
-
   };
 
   return {

@@ -96,7 +96,7 @@ const PatientHeader = () => {
       >
         <CreateIcon />
         <Link
-          href={`/pacientes/${patient?.id}/detalhes`}
+          href={`/pacientes/${patient?.id}/editar`}
           style={{ textDecoration: 'none', color: 'primary.main' }}
         >
           <Typography>Editar</Typography>
