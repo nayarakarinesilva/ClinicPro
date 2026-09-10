@@ -4,14 +4,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { Box, Paper, Stack, Typography, Divider } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import LinkButton from '@/ui/Buttons/LinkButton/LinkButton';
-import Input from '@/ui/Input/Input';
-import TextArea from '@/ui/TextArea/TextArea';
-import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
-import OutlineButton from '@/ui/Buttons/OutlineButton/OutlineButton';
+import LinkButton from '@/components/ui/Buttons/LinkButton/LinkButton';
+import Input from '@/components/ui/Input/Input';
+import TextArea from '@/components/ui/TextArea/TextArea';
+import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
+import OutlineButton from '@/components/ui/Buttons/OutlineButton/OutlineButton';
 import { usePatients } from '@/features/Patients/hooks/usePatients';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
-import CustomModal from '@/ui/CustomModal/CustomModal';
+import CustomModal from '@/components/ui/CustomModal/CustomModal';
 
 const EditPatients = () => {
   const { register, handleSubmit, errors, handleEditPatient, reset } =

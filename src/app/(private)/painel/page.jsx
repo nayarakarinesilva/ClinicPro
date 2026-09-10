@@ -1,22 +1,5 @@
-import Title from '@/components/Title/Title';
-import { Box, Stack } from '@mui/material';
+import DashboardContainer from '@/features/Dashboard/components/DashboardContainer/DashboardContainer';
 
 export default function Painel() {
-  return (
-    <Box sx={{ padding: 2 }}>
-      <Stack
-        spacing={1}
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <Box>
-          <Title>Dashboard</Title>
-        </Box>
-      </Stack>
-    </Box>
-  );
+  return <DashboardContainer />;
 }

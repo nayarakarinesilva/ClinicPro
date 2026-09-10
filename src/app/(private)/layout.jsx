@@ -1,5 +1,5 @@
-import HeaderDashboard from '@/features/Dashboard/components/HeaderDashboard';
-import Sidebar from '@/shared/sidebar/Sidebar';
+import Header from '@/components/layout/Header/Header';
+import Sidebar from '@/components/layout/Sidebar/Sidebar';
 import { Box } from '@mui/material';
 
 export default function LayoutPrivate({ children }) {
@@ -14,7 +14,7 @@ export default function LayoutPrivate({ children }) {
             backgroundColor: 'background.paper',
           }}
         >
-          <HeaderDashboard />
+          <Header />
 
           {children}
         </Box>

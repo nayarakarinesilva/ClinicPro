@@ -1,4 +1,4 @@
-import Title from '@/components/Title/Title';
+import Title from '@/components/ui/Title/Title';
 import { Box, Stack } from '@mui/material';
 
 export default function Consultas() {

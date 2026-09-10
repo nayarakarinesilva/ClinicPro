@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Paper, Typography, Avatar } from '@mui/material';
 import { useParams } from 'next/navigation';
-import CustomTitle from '@/ui/CustomTitle/CustomTitle';
+import CustomTitle from '@/components/ui/CustomTitle/CustomTitle';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
 import { formatCpf, getAvatarInitial } from '@/helpers/userHelper';
 import { getBirth } from '@/helpers/dateHelper';

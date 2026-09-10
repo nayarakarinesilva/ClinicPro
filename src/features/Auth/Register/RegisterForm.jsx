@@ -3,8 +3,8 @@
 import React from 'react';
 import { Box, Stack } from '@mui/material';
 import { useRegister } from './hooks/useRegister';
-import Input from '@/ui/Input/Input';
-import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
+import Input from '@/components/ui/Input/Input';
+import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
 import TitleForm from '../components/TitleForm/TitleForm';
 import FormFooterLink from '../components/FormFooterLink/FormFooterLink';
 
