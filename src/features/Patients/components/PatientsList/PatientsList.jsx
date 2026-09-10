@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
+import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
 import {
   Box,
   InputAdornment,

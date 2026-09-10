@@ -1,6 +1,6 @@
-import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
-import Input from '@/ui/Input/Input';
-import TextArea from '@/ui/TextArea/TextArea';
+import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
+import Input from '@/components/ui/Input/Input';
+import TextArea from '@/components/ui/TextArea/TextArea';
 import {
   Box,
   Dialog,

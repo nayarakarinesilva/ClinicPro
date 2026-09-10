@@ -1,5 +1,5 @@
 import GlobalProviders from '../components/providers/GlobalProviders';
-import Footer from '@/shared/Footer/Footer';
+import Footer from '@/components/layout/Footer/Footer';
 import { Box } from '@mui/material';
 
 export const metadata = {

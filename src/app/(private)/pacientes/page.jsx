@@ -1,5 +1,5 @@
 
-import Title from '@/components/Title/Title';
+import Title from '@/components/ui/Title/Title';
 import PatientsList from '@/features/Patients/components/PatientsList/PatientsList';
 import { Box, Stack } from '@mui/material';
 

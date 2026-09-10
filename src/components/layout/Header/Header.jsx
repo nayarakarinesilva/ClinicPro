@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { getAvatarInitial } from '@/helpers/userHelper';
 
-export default function HeaderDashboard() {
+export default function Header() {
   const today = formatFullDate();
   const router = useRouter();
 

@@ -3,10 +3,10 @@
 import React, { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { Box, Stack, Paper, Typography, Divider } from '@mui/material';
-import CustomButton from '@/ui/Buttons/CustomButton/CustomButton';
-import CustomTitle from '@/ui/CustomTitle/CustomTitle';
-import LinkButton from '@/ui/Buttons/LinkButton/LinkButton';
-import CustomModal from '@/ui/CustomModal/CustomModal';
+import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
+import CustomTitle from '@/components/ui/CustomTitle/CustomTitle';
+import LinkButton from '@/components/ui/Buttons/LinkButton/LinkButton';
+import CustomModal from '@/components/ui/CustomModal/CustomModal';
 import { usePatients } from '../../hooks/usePatients';
 import { usePatient } from '../../hooks/usePatient';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
