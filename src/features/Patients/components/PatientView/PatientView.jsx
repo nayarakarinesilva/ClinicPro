@@ -4,14 +4,13 @@ import React, { useState } from 'react';
 import { Box, Stack } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LinkButton from '@/components/ui/Buttons/LinkButton/LinkButton';
-import PatientViewTabs from './components/PatientViewTabs/PatientViewTabs';
-import PatientInformation from './components/PatientInformation/PatientInformation';
-import PatientRecord from './components/PatientRecord/PatientRecord';
-import PatientHeader from './components/PatientHeader/PatientHeader';
+import PatientViewTabs from './PatientViewTabs/PatientViewTabs';
+import PatientInformation from './PatientInformation/PatientInformation';
+import PatientRecord from './PatientRecord/PatientRecord';
+import PatientHeader from './PatientHeader/PatientHeader';
 
 const PatientView = () => {
   const [value, setValue] = useState(0);
-
 
   return (
     <Box>

@@ -30,6 +30,10 @@ export const theme = createTheme({
       main: '#47B881',
       light: '#97D4B4',
     },
+    warning: {
+      main: '#E67E22',
+      light: '#FDF0E6',
+    },
     button: {
       primary: '#004AC6',
       disabled: '#D1D5DB',
