@@ -5,7 +5,7 @@ import { Box, Divider, Paper, Typography } from '@mui/material';
 import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
 import { useParams } from 'next/navigation';
 import { usePatient } from '@/features/Patients/hooks/usePatient';
-import AddMedicalRecordModal from './components/AddMedicalRecordModal/AddMedicalRecordModal';
+import AddMedicalRecordModal from './AddMedicalRecordModal/AddMedicalRecordModal';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 const PatientRecord = () => {

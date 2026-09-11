@@ -1,15 +1,17 @@
+'use client';
+
 import React from 'react';
-import { Box, Stack } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import Title from '@/components/ui/Title/Title';
-import InfoCard from '../InfoCard/InfoCard';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import RecentPatients from '../RecentPatients/RecentPatients';
+import NextAppointments from '../NextAppointments/NextAppointments';
+import DashboardStats from '../DashboardStats/DashboardStats';
 
 const DashboardContainer = () => {
   return (
     <Box sx={{ padding: 2, maxWidth: 1200, width: '100%' }}>
-      <Stack
+      <Grid
+        container
         spacing={2}
         sx={{
           display: 'flex',
@@ -20,32 +22,20 @@ const DashboardContainer = () => {
         <Box>
           <Title>Dashboard</Title>
         </Box>
-      </Stack>
-      <Stack direction="row" spacing={2}>
-        <Box sx={{ flex: 1 }}>
-          <InfoCard
-            icon={<PeopleAltIcon />}
-            bgColor={'background.secondary'}
-            color={'primary.main'}
-          />
-        </Box>
+      </Grid>
 
-        <Box sx={{ flex: 1 }}>
-          <InfoCard
-            icon={<PersonAddIcon />}
-            bgColor={'background.active'}
-            color={'success.main'}
-          />
-        </Box>
+      <Grid container spacing={2} sx={{ mb: 3 }}>
+        <DashboardStats />
+      </Grid>
 
-        <Box sx={{ flex: 1 }}>
-          <InfoCard
-            icon={<AssignmentIcon />}
-            bgColor={'border.default'}
-            color={'text.muted'}
-          />
-        </Box>
-      </Stack>
+      <Grid container spacing={2}>
+        <Grid size={7}>
+          <RecentPatients />
+        </Grid>
+        <Grid size={5}>
+          <NextAppointments />
+        </Grid>
+      </Grid>
     </Box>
   );
 };

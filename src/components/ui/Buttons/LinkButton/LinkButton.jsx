@@ -11,7 +11,7 @@ const LinkButton = ({ icon: Icon, children, onClick, href }) => {
       onClick={onClick}
       sx={{ fontSize: 14, textTransform: 'none', color: 'text.main' }}
     >
-      <Icon />
+      {Icon && <Icon />}
       {children}
     </Button>
   );

@@ -44,6 +44,7 @@ export const usePatients = () => {
       phone: data.phone,
       email: data.email,
       text_notes: data.text_notes,
+      createdAt: new Date().toISOString(),
       medicalRecord: [],
     };
 
