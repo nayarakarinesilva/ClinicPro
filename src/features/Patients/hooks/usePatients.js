@@ -46,7 +46,19 @@ export const usePatients = () => {
       text_notes: data.text_notes,
       createdAt: new Date().toISOString(),
       medicalRecord: [],
+      appointments: [],
     };
+    
+    /*
+    appointments
+    {
+      id: 1,
+      date: '2026-09-15',
+      time: '14:00',
+      type: 'Consulta',
+      status: 'scheduled'
+    }
+    */
 
     //Adicionar novo paciente
     addPatients(patient);

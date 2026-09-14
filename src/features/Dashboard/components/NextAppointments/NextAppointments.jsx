@@ -1,5 +1,6 @@
 import React from 'react';
 import { Paper } from '@mui/material';
+import DashboardCalendarDay from './DashboardCalendarDay/DashboardCalendarDay';
 
 const NextAppointments = () => {
   return (
@@ -17,7 +18,7 @@ const NextAppointments = () => {
         boxShadow: 'none',
       }}
     >
-      Aqui atendimentos
+      <DashboardCalendarDay />
     </Paper>
   );
 };
