@@ -1,22 +1,5 @@
-import Title from '@/components/ui/Title/Title';
-import { Box, Stack } from '@mui/material';
+import ConsultationsContainer from '@/features/Consultations/ConsultationsContainer';
 
 export default function Consultas() {
-  return (
-    <Box sx={{ padding: 2 }}>
-      <Stack
-        spacing={1}
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <Box>
-          <Title>Consultas</Title>
-        </Box>
-      </Stack>
-    </Box>
-  );
+  return <ConsultationsContainer />;
 }

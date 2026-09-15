@@ -18,6 +18,7 @@ export const theme = createTheme({
     background: {
       default: '#FFFFFF',
       paper: '#F8F9FF',
+      light: '#FBFCFF',
       primary: '#D5E4F8',
       secondary: '#DBEAFE',
       active: '#DCFCE7',
@@ -28,7 +29,7 @@ export const theme = createTheme({
     },
     success: {
       main: '#47B881',
-      light: '#97D4B4',
+      light: '#E3F5EC',
     },
     warning: {
       main: '#E67E22',
