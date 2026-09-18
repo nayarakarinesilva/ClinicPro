@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import Title from '@/components/ui/Title/Title';
 import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
@@ -8,8 +8,15 @@ import InfoCard from '@/components/ui/InfoCard/InfoCard';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CancelIcon from '@mui/icons-material/Cancel';
+import AddConsultation from './components/AddConsultation';
 
 const ConsultationsContainer = () => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
   return (
     <Box sx={{ padding: 2 }}>
       <Stack
@@ -28,7 +35,9 @@ const ConsultationsContainer = () => {
           </Typography>
         </Box>
         <Box>
-          <CustomButton href={'/consultas/nova'}>+ Nova Consulta</CustomButton>
+          <CustomButton onClick={() => setOpenModal(true)}>
+            + Nova Consulta
+          </CustomButton>
         </Box>
       </Stack>
       <Grid container spacing={2}>
@@ -69,6 +78,8 @@ const ConsultationsContainer = () => {
         </Typography>
         tabela
       </Stack>
+
+      <AddConsultation openModal={openModal} onClose={handleCloseModal} />
     </Box>
   );
 };

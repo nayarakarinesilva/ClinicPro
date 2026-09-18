@@ -64,7 +64,7 @@ export const usePatientsStore = create(
         });
       },
 
-      addAppointment: (patientId, appointment) => {
+      addConsultation: (patientId, appointment) => {
         set((state) => {
           // Percorre a lista de pacientes para encontrar o paciente pelo ID
           const updatedPatient = state.patientsList.map((patient) => {
