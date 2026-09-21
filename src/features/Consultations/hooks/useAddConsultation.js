@@ -1,7 +1,7 @@
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
 import { useForm } from 'react-hook-form';
 
-export const useAddConsultation = ({ patientId, onClose }) => {
+export const useAddConsultation = ({ patientId }) => {
   const {
     register,
     handleSubmit,
@@ -20,7 +20,6 @@ export const useAddConsultation = ({ patientId, onClose }) => {
     alert('Consulta agendada com sucesso!');
     addConsultation(patientId, appointments);
     reset();
-    onClose();
   };
   return { handleAddConsultation, register, handleSubmit, errors };
 };

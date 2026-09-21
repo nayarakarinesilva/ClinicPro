@@ -1,153 +1,178 @@
+'use client';
+
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
 import TextArea from '@/components/ui/TextArea/TextArea';
 import {
   Autocomplete,
-  Box,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  IconButton,
   TextField,
   Typography,
+  Box,
+  Paper,
+  Stack,
+  Divider,
 } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import Input from '@/components/ui/Input/Input';
 import OutlineButton from '@/components/ui/Buttons/OutlineButton/OutlineButton';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
 import { useAddConsultation } from '../hooks/useAddConsultation';
+import LinkButton from '@/components/ui/Buttons/LinkButton/LinkButton';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-const AddConsultation = ({ openModal, onClose }) => {
+const AddConsultation = () => {
   // estado da opção selecionada no Autocomplete
   const [value, setValue] = React.useState(null);
+  const router = useRouter();
 
   const listPatients = usePatientsStore((state) => state.patientsList);
   console.log('listPatients', listPatients);
 
   const { handleAddConsultation, register, handleSubmit, errors } =
-    useAddConsultation({ patientId: value?.id, onClose });
+    useAddConsultation({ patientId: value?.id });
+
+  const handleClose = () => {
+    router.push('/consulta');
+  };
 
   return (
-    <Dialog
-      open={openModal}
-      onClose={onClose}
-      fullWidth
-      maxWidth="sm"
-      sx={{
-        '& .MuiDialog-paper': {
-          minHeight: '40vh',
-          borderRadius: '12px',
-          backgroundColor: 'background.default',
-        },
-      }}
-    >
-      <Box
+    <Box>
+      <LinkButton href="/consulta" icon={ArrowBackIcon}>
+        Voltar para consultas
+      </LinkButton>
+      <Stack
         sx={{
+          pt: 2,
+          width: '100%',
+          maxWidth: 800,
+          margin: '0 auto',
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'space-between',
-          backgroundColor: 'background.paper',
+          justifyContent: 'center',
         }}
       >
-        <DialogTitle sx={{ fontWeight: 600, color: 'text.secondary' }}>
-          Adicionar nova consulta
-        </DialogTitle>
-
-        <IconButton
-          edge="start"
-          color="inherit"
-          onClick={() => onClose()}
-          aria-label="close"
-          sx={{ marginRight: '20px', color: 'text.secondary' }}
+        <Paper
+          variant="outlined"
+          sx={{
+            width: '100%',
+            height: 600,
+            borderColor: 'border.default',
+            backgroundColor: 'background.default',
+            borderRadius: 2,
+            boxShadow: 'none',
+          }}
         >
-          <CloseIcon />
-        </IconButton>
-      </Box>
-      <DialogContent>
-        <Box component="form" onSubmit={handleSubmit(handleAddConsultation)}>
-          <Box sx={{ mb: 1 }}>
+          <Box sx={{ p: 3 }}>
             <Typography
-              sx={{
-                fontSize: '14px',
-                fontWeight: 600,
-                color: 'primary.main',
-                mb: 0.5,
+              variant="h6"
+              sx={{ color: 'text.secondary', fontWeight: 600 }}
+            >
+              Agendar nova consulta
+            </Typography>
+            <Divider />
+            <Stack
+              component="form"
+              noValidate
+              onSubmit={handleSubmit(handleAddConsultation)}
+              style={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 3,
+                marginTop: '25px',
               }}
             >
-              Paciente
-              <Box component="span" sx={{ color: 'error.main' }}>
-                *
-              </Box>
-            </Typography>
+              <Box sx={{ mb: 1 }}>
+                <Typography
+                  sx={{
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    color: 'primary.main',
+                    mb: 0.5,
+                  }}
+                >
+                  Paciente
+                  <Box component="span" sx={{ color: 'error.main' }}>
+                    *
+                  </Box>
+                </Typography>
 
-            <Autocomplete
-              fullWidth
-              value={value}
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}
-              options={listPatients}
-              getOptionLabel={(patient) => patient.name}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  {...register('patientId', {
-                    required: 'Paciente é obrigatório',
-                  })}
-                  placeholder="Selecione um paciente"
-                  size="small"
+                <Autocomplete
+                  fullWidth
+                  value={value}
+                  onChange={(event, newValue) => {
+                    setValue(newValue);
+                  }}
+                  options={listPatients}
+                  getOptionLabel={(patient) => patient.name}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      placeholder="Selecione um paciente"
+                      size="small"
+                    />
+                  )}
                 />
-              )}
-            />
+              </Box>
+              <Box sx={{ display: 'flex', gap: 2 }}>
+                <Input
+                  {...register('date', {
+                    required: 'Data é obrigatório',
+                  })}
+                  label="Data"
+                  type="date"
+                  required
+                  placeholder={'00/00/0000'}
+                />
+                <Input
+                  {...register('time', {
+                    required: 'Hora é obrigatória',
+                  })}
+                  label="Hora"
+                  type="time"
+                  required
+                />
+              </Box>
+              <Input
+                {...register('procedure', {
+                  required: 'Procedimento é obrigatório',
+                })}
+                label="Procedimento"
+                type="text"
+                required
+                placeholder={'Ex: consulta clínica geral'}
+              />
+
+              <TextArea
+                {...register('observations')}
+                label={'Observações'}
+                type={'text'}
+                placeholder={'Anotações clínicas...'}
+                // error={!!errors.observations}
+                // helperText={errors.observations?.message}
+              />
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  width: '60%',
+                  gap: 2,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto',
+                }}
+              >
+                <OutlineButton type="button" onClick={handleClose}>
+                  Cancelar
+                </OutlineButton>
+                <CustomButton type="submit">Cadastrar</CustomButton>
+              </Box>
+            </Stack>
           </Box>
-
-          <Box sx={{ display: 'flex', gap: 2 }}>
-            <Input
-              {...register('date', {
-                required: 'Data é obrigatório',
-              })}
-              label="Data"
-              type="date"
-              required
-              placeholder={'00/00/0000'}
-            />
-            <Input label="Hora" type="time" required />
-          </Box>
-          <Input
-            {...register('procedure', {
-              required: 'Procedimento é obrigatório',
-            })}
-            label="Procedimento"
-            type="text"
-            required
-            placeholder={'Ex: consulta clínica geral'}
-          />
-
-          <TextArea
-            {...register('observations', {
-              required: 'Observações são obrigatórias',
-            })}
-            label={'Observações'}
-            type={'text'}
-            required
-            placeholder={'Anotações clínicas...'}
-            // error={!!errors.observations}
-            // helperText={errors.observations?.message}
-          />
-
-          <DialogActions>
-            <Box sx={{ display: 'flex', gap: 2, width: '100%' }}>
-              <OutlineButton onClick={onClose} type="button">
-                Cancelar
-              </OutlineButton>
-              <CustomButton type="submit">Agendar Consulta</CustomButton>
-            </Box>
-          </DialogActions>
-        </Box>
-      </DialogContent>
-    </Dialog>
+        </Paper>
+      </Stack>
+    </Box>
   );
 };
 
