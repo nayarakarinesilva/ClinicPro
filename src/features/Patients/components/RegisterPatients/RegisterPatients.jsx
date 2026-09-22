@@ -141,8 +141,8 @@ const RegisterPatients = () => {
                   margin: '0 auto',
                 }}
               >
-                <CustomButton type="submit">Cadastrar</CustomButton>
                 <OutlineButton type="button">Cancelar</OutlineButton>
+                <CustomButton type="submit">Cadastrar</CustomButton>
               </Box>
             </Stack>
           </Box>

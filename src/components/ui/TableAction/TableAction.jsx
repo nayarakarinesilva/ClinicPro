@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import Link from 'next/link';
 
-const TableActionIcon = ({ patient }) => {
+const TableAction = ({ viewHref, editHref, deleteHref }) => {
   return (
     <>
       <Tooltip title="Visualizar paciente">
@@ -18,12 +18,12 @@ const TableActionIcon = ({ patient }) => {
             borderRadius: 1,
             cursor: 'pointer',
             '&:hover': {
-              backgroundColor: 'background.primary',
+              backgroundColor: 'border.default',
             },
           }}
         >
-          <Link href={`/pacientes/${patient.id}/detalhes`}>
-            <RemoveRedEyeIcon sx={{ color: 'primary.main' }} />
+          <Link href={viewHref}>
+            <RemoveRedEyeIcon sx={{ color: 'text.muted' }} />
           </Link>
         </Box>
       </Tooltip>
@@ -41,11 +41,11 @@ const TableActionIcon = ({ patient }) => {
             },
           }}
         >
-          <Link href={`/pacientes/${patient.id}/editar`}>
+          <Link href={editHref}>
             <EditIcon
               sx={{
                 cursor: 'pointer',
-                color: 'text.primary',
+                color: 'text.muted',
               }}
             />
           </Link>
@@ -61,12 +61,12 @@ const TableActionIcon = ({ patient }) => {
             borderRadius: 1,
             cursor: 'pointer',
             '&:hover': {
-              backgroundColor: 'error.light',
+              backgroundColor: 'border.default',
             },
           }}
         >
-          <Link href={`/pacientes/${patient.id}/deletar`}>
-            <DeleteIcon sx={{ color: 'error.main' }} />
+          <Link href={deleteHref}>
+            <DeleteIcon sx={{ color: 'text.muted' }} />
           </Link>
         </Box>
       </Tooltip>
@@ -74,4 +74,4 @@ const TableActionIcon = ({ patient }) => {
   );
 };
 
-export default TableActionIcon;
+export default TableAction;

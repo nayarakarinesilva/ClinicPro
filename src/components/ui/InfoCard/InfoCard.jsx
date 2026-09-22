@@ -1,12 +1,20 @@
 import { Box, Paper, Typography } from '@mui/material';
 import React from 'react';
 
-const InfoCard = ({ icon, bgColor, color, title, subtitle, value }) => {
+const InfoCard = ({
+  icon,
+  bgColor,
+  color,
+  title,
+  subtitle,
+  value,
+  height = '130px',
+}) => {
   return (
     <Paper
       variant="outlined"
       sx={{
-        height: '130px',
+        height: height,
         display: 'flex',
         flexDirection: 'row',
         p: 2,

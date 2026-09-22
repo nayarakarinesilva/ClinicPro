@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button } from '@mui/material';
 
-const OutlineButton = ({ children, onClick }) => {
+const OutlineButton = ({ children, onClick, type }) => {
   return (
     <Button
       variant="contained"
       onClick={onClick}
-    //   type={type}
+      type={type}
       fullWidth
       sx={{
         fontWeight: 600,
@@ -17,9 +17,9 @@ const OutlineButton = ({ children, onClick }) => {
         mt: 1,
         mb: 1,
         minHeight: '45px',
-        color: 'primary.main',
-        border:'2px solid',
-        borderColor:'primary.main'
+        color: 'text.secondary',
+        border:'1px solid',
+        borderColor:'text.muted'
       }}
     >
       {children}

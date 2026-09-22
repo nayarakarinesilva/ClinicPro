@@ -18,21 +18,26 @@ export const theme = createTheme({
     background: {
       default: '#FFFFFF',
       paper: '#F8F9FF',
+      light: '#FBFCFF',
       primary: '#D5E4F8',
       secondary: '#DBEAFE',
       active: '#DCFCE7',
     },
     error: {
-      main: '#F54336',
-      light: '#FDE4E1',
+      main: '#e43e33',
+      light: '#FDE4E1', 
     },
     success: {
-      main: '#47B881',
-      light: '#97D4B4',
+      main: '#3ca874',
+      light: '#E3F5EC',
     },
     warning: {
       main: '#E67E22',
       light: '#FDF0E6',
+    },
+    lilac: {
+      main: '#7C3AED',
+      light: '#e9d8fc',
     },
     button: {
       primary: '#004AC6',

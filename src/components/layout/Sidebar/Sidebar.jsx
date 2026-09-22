@@ -48,8 +48,8 @@ const Sidebar = () => {
       <SidebarItem
         icon={InsertInvitationOutlinedIcon}
         text={'Consultas'}
-        active={pathname === '/consultas'}
-        onClick={() => handleNavigate('/consultas')}
+        active={pathname === '/consulta'}
+        onClick={() => handleNavigate('/consulta')}
       />
     </Box>
   );

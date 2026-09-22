@@ -9,19 +9,28 @@ import {
   TableRow,
   TableBody,
 } from '@mui/material';
-import TableActionIcon from '@/features/Patients/components/TableActionIcon/TableActionIcon';
+import TableAction from '@/components/ui/TableAction/TableAction';
 import { formatedDate } from '@/helpers/dateHelper';
 
 const PatientsTable = ({ patients }) => {
   return (
     <Box>
-      <TableContainer component={Paper}>
+      <TableContainer
+        component={Paper}
+        sx={{
+          border: '1px solid #e0e0e0',
+          borderRadius: 2,
+          boxShadow: 'none',
+          overflow: 'hidden',
+        }}
+      >
         <Table stickyHeader aria-label="tabela">
           <TableHead>
             <TableRow
               sx={{
                 '& .MuiTableCell-head': {
                   fontWeight: 600,
+                  backgroundColor: 'background.light',
                 },
               }}
             >
@@ -35,14 +44,25 @@ const PatientsTable = ({ patients }) => {
 
           <TableBody>
             {patients.map((patient, index) => (
-              <TableRow key={index} hover role="checkbox">
+              <TableRow
+                key={index}
+                hover
+                role="checkbox"
+                sx={{
+                  backgroundColor: 'background.default',
+                }}
+              >
                 <TableCell>{patient.name}</TableCell>
                 <TableCell>{patient.phone}</TableCell>
                 <TableCell>{formatedDate(patient.date_birth)}</TableCell>
                 <TableCell>
                   {/* Botões de ações na tabela */}
                   <Box sx={{ display: 'flex', gap: 1, cursor: 'pointer' }}>
-                    <TableActionIcon patient={patient} />
+                    <TableAction
+                      viewHref={`/pacientes/${patient.id}/detalhes`}
+                      editHref={`/pacientes/${patient.id}/editar`}
+                      deleteHref={`/pacientes/${patient.id}/deletar`}
+                    />
                   </Box>
                 </TableCell>
               </TableRow>
