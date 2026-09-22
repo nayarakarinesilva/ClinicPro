@@ -12,6 +12,7 @@ import {
   Chip,
 } from '@mui/material';
 import { formatedDate } from '@/helpers/dateHelper';
+import TableAction from '@/components/ui/TableAction/TableAction';
 
 const TableConsultation = ({ appointments }) => {
   const today = new Date().toISOString().split('T')[0];
@@ -104,7 +105,7 @@ const TableConsultation = ({ appointments }) => {
               <TableCell>HORÁRIO</TableCell>
               <TableCell>PACIENTE</TableCell>
               <TableCell>STATUS</TableCell>
-              {/* <TableCell>AÇÕES</TableCell> */}
+              <TableCell>AÇÕES</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -128,9 +129,13 @@ const TableConsultation = ({ appointments }) => {
                 </TableCell>
                 <TableCell>
                   {/* Botões de ações na tabela */}
-                  {/* <Box sx={{ display: 'flex', gap: 1, cursor: 'pointer' }}>
-                    <TableActionIcon patient={patient} />
-                  </Box> */}
+                  <Box sx={{ display: 'flex', gap: 1, cursor: 'pointer' }}>
+                    <TableAction
+                      viewHref={`/consulta/${patient.id}/detalhes`}
+                      editHref={`/consulta/${patient.id}/editar`}
+                      deleteHref={`/consulta/${patient.id}/deletar`}
+                    />
+                  </Box>
                 </TableCell>
               </TableRow>
             ))}

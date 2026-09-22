@@ -1,7 +1,7 @@
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
 import { useForm } from 'react-hook-form';
 
-export const useAddConsultation = ({ patientId }) => {
+export const useConsultations = () => {
   const {
     register,
     handleSubmit,
@@ -10,6 +10,7 @@ export const useAddConsultation = ({ patientId }) => {
   } = useForm();
 
   const addConsultation = usePatientsStore((state) => state.addConsultation);
+  const editConsultation = usePatientsStore((state) => state.editConsultation);
 
   const handleAddConsultation = (data) => {
     const appointments = {
@@ -21,5 +22,17 @@ export const useAddConsultation = ({ patientId }) => {
     addConsultation(patientId, appointments);
     reset();
   };
-  return { handleAddConsultation, register, handleSubmit, errors };
+
+  const handleEditConsultation = (patientId, consultationId, data) => {
+    alert('Editado com sucesso!');
+    editConsultation(patientId, consultationId, data);
+  };
+  return {
+    handleAddConsultation,
+    handleEditConsultation,
+    register,
+    handleSubmit,
+    errors,
+    reset,
+  };
 };

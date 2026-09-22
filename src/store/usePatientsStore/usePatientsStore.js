@@ -90,6 +90,46 @@ export const usePatientsStore = create(
           };
         });
       },
+      editConsultation: (patientId, consultationId, data) => {
+        set((state) => {
+          // Percorre a lista de pacientes para encontrar o paciente pelo ID
+          const updatedList = state.patientsList.map((patient) => {
+            // Se não for o paciente informado, mantém o paciente como está
+            if (Number(patient.id) !== Number(patientId)) {
+              return patient;
+            }
+
+            return {
+              // Mantém todos os dados que o paciente já possui
+              ...patient,
+
+              // Percorre as consultas do paciente para encontrar a consulta pelo ID
+              appointments: [
+                ...(patient.appointments || []).map((appointment) => {
+                  // Se encontrar a consulta, atualiza os dados
+                  if (Number(appointment.id) === Number(consultationId)) {
+                    return {
+                      // Mantém os dados antigos da consulta
+                      ...appointment,
+
+                      // Substitui/adiciona os dados recebidos
+                      ...data,
+                    };
+                  }
+
+                  // Se não for a consulta procurada, mantém a consulta como está
+                  return appointment;
+                }),
+              ],
+            };
+          });
+
+          // Atualiza a lista de pacientes com os dados alterados
+          return {
+            patientsList: updatedList,
+          };
+        });
+      },
     }),
     {
       name: 'patientsList-storage',

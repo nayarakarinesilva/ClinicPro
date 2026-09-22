@@ -36,7 +36,7 @@ const ConsultationsContainer = () => {
   );
 
   // console.log('==Consultas', appointments);
-  // console.log('==Consultas hoje', appointmentsToday);
+  console.log('==Consultas hoje', appointmentsToday);
   // console.log('==today', today);
   return (
     <Box sx={{ padding: 2 }}>
@@ -92,7 +92,7 @@ const ConsultationsContainer = () => {
         </Grid>
       </Grid>
       <Stack>
-        <TableConsultation appointments={appointments} />
+        <TableConsultation appointments={appointmentsToday} />
       </Stack>
     </Box>
   );

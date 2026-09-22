@@ -1,9 +1,5 @@
 'use client';
-
-import React from 'react';
-import { useRouter } from 'next/navigation';
-import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
-import TextArea from '@/components/ui/TextArea/TextArea';
+import React, { useEffect, useRef } from 'react';
 import {
   Autocomplete,
   TextField,
@@ -12,27 +8,72 @@ import {
   Paper,
   Stack,
   Divider,
-  InputLabel,
   FormControl,
   NativeSelect,
 } from '@mui/material';
 import Input from '@/components/ui/Input/Input';
 import OutlineButton from '@/components/ui/Buttons/OutlineButton/OutlineButton';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
-import { useConsultations } from '../hooks/useConsultations';
 import LinkButton from '@/components/ui/Buttons/LinkButton/LinkButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import TextArea from '@/components/ui/TextArea/TextArea';
+import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
+import { useConsultations } from '../hooks/useConsultations';
+import { useParams, useRouter } from 'next/navigation';
 
-const AddConsultation = () => {
-  // estado da opção selecionada no Autocomplete
-  const [value, setValue] = React.useState(null);
+const EditConsultation = () => {
   const router = useRouter();
 
   const listPatients = usePatientsStore((state) => state.patientsList);
-  console.log('listPatients', listPatients);
+  const [value, setValue] = React.useState(null);
+  const { id } = useParams();
+  const consultationId = Number(id);
+  const { handleEditConsultation, register, handleSubmit, reset, errors } =
+    useConsultations();
+  const initialized = useRef(false);
 
-  const { handleAddConsultation, register, handleSubmit, errors } =
-    useConsultations({ patientId: value?.id });
+  useEffect(() => {
+    if (initialized.current) return;
+    if (!consultationId) return;
+
+    // Procura o paciente que possui a consulta que será editada
+    const patient = listPatients.find((patient) =>
+      patient.appointments?.some(
+        // Verifica se o paciente possui uma consulta com o ID da URL
+        (appointment) => Number(appointment.id) === consultationId
+      )
+    );
+
+    if (!patient) return;
+
+    // Define o paciente encontrado no Autocomplete
+    setValue(patient);
+
+    // Procura a consulta dentro do paciente encontrado
+    const consultation = patient.appointments?.find(
+      (appointment) => Number(appointment.id) === consultationId
+    );
+
+    if (!consultation) return;
+
+    // Preenche o formulário com os dados da consulta
+    if (patient) {
+      reset(consultation);
+      initialized.current = true;
+    }
+  }, [listPatients, consultationId, reset]);
+
+  const handleSubmitEdit = (data) => {
+    if (!value) return;
+
+    console.log('VAI EDITAR:', {
+      patientId: value.id,
+      consultationId,
+      data,
+    });
+
+    handleEditConsultation(value.id, consultationId, data);
+  };
 
   const handleClose = () => {
     router.push('/consulta');
@@ -77,7 +118,7 @@ const AddConsultation = () => {
             <Stack
               component="form"
               noValidate
-              onSubmit={handleSubmit(handleAddConsultation)}
+              onSubmit={handleSubmit(handleSubmitEdit)}
               style={{
                 width: '100%',
                 display: 'flex',
@@ -168,20 +209,18 @@ const AddConsultation = () => {
                       </Box>
                     </Typography>
                     <NativeSelect
-                      defaultValue={'agendada'}
                       {...register('status', {
                         required: 'Status é obrigatório',
                       })}
                     >
-                      <option value={'agendada'}>Agendada</option>
-                      <option value={'confirmada'}>Confirmada</option>
-                      <option value={'concluida'}>Concluída</option>
-                      <option value={'cancelada'}>Cancelada</option>
+                      <option value="agendada">Agendada</option>
+                      <option value="confirmada">Confirmada</option>
+                      <option value="concluida">Concluída</option>
+                      <option value="cancelada">Cancelada</option>
                     </NativeSelect>
                   </FormControl>
                 </Box>
               </Box>
-
               <TextArea
                 {...register('observations')}
                 label={'Observações'}
@@ -205,7 +244,7 @@ const AddConsultation = () => {
                 <OutlineButton type="button" onClick={handleClose}>
                   Cancelar
                 </OutlineButton>
-                <CustomButton type="submit">Cadastrar</CustomButton>
+                <CustomButton type="submit">Salvar alterações</CustomButton>
               </Box>
             </Stack>
           </Box>
@@ -215,4 +254,4 @@ const AddConsultation = () => {
   );
 };
 
-export default AddConsultation;
+export default EditConsultation;

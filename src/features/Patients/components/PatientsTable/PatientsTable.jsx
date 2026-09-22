@@ -58,7 +58,11 @@ const PatientsTable = ({ patients }) => {
                 <TableCell>
                   {/* Botões de ações na tabela */}
                   <Box sx={{ display: 'flex', gap: 1, cursor: 'pointer' }}>
-                    <TableAction patient={patient} />
+                    <TableAction
+                      viewHref={`/pacientes/${patient.id}/detalhes`}
+                      editHref={`/pacientes/${patient.id}/editar`}
+                      deleteHref={`/pacientes/${patient.id}/deletar`}
+                    />
                   </Box>
                 </TableCell>
               </TableRow>
