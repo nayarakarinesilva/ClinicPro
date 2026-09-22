@@ -9,7 +9,7 @@ import {
   TableRow,
   TableBody,
 } from '@mui/material';
-import TableActionIcon from '@/features/Patients/components/TableActionIcon/TableActionIcon';
+import TableAction from '@/components/ui/TableAction/TableAction';
 import { formatedDate } from '@/helpers/dateHelper';
 
 const PatientsTable = ({ patients }) => {
@@ -58,7 +58,7 @@ const PatientsTable = ({ patients }) => {
                 <TableCell>
                   {/* Botões de ações na tabela */}
                   <Box sx={{ display: 'flex', gap: 1, cursor: 'pointer' }}>
-                    <TableActionIcon patient={patient} />
+                    <TableAction patient={patient} />
                   </Box>
                 </TableCell>
               </TableRow>

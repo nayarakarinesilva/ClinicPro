@@ -8,8 +8,36 @@ import InfoCard from '@/components/ui/InfoCard/InfoCard';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
+import TableConsultation from './components/TableConsultation';
 
 const ConsultationsContainer = () => {
+  const listPatients = usePatientsStore((state) => state.patientsList);
+
+  const today = new Date().toISOString().split('T')[0];
+
+  //Pegue as consultas + nome → depois junte todas as consultas em uma única lista
+  const appointments = listPatients
+    .map((patient) => {
+      const patientAppointments = patient.appointments || [];
+      return patientAppointments.map((appointment) => ({
+        ...appointment,
+        patientName: patient.name,
+      }));
+    })
+    .flat();
+
+  const appointmentsToday = appointments.filter((item) => item.date === today);
+  const appointmentsCanceled = appointments.filter(
+    (item) => item.status === 'cancelada' || 0
+  );
+  const appointmentsCompleted = appointments.filter(
+    (item) => item.status === 'concluida' || 0
+  );
+
+  // console.log('==Consultas', appointments);
+  // console.log('==Consultas hoje', appointmentsToday);
+  // console.log('==today', today);
   return (
     <Box sx={{ padding: 2 }}>
       <Stack
@@ -35,7 +63,7 @@ const ConsultationsContainer = () => {
         <Grid size={4}>
           <InfoCard
             subtitle={'Consultas de hoje'}
-            value={'12'}
+            value={appointmentsToday.length}
             icon={<CalendarMonthIcon />}
             bgColor={'background.secondary'}
             color={'primary.main'}
@@ -45,7 +73,7 @@ const ConsultationsContainer = () => {
         <Grid size={4}>
           <InfoCard
             subtitle={'Concluídas'}
-            value={'2'}
+            value={appointmentsCompleted.length}
             icon={<CheckBoxIcon />}
             bgColor={'success.light'}
             color={'success.main'}
@@ -55,7 +83,7 @@ const ConsultationsContainer = () => {
         <Grid size={4}>
           <InfoCard
             subtitle={'Canceladas'}
-            value={'3'}
+            value={appointmentsCanceled.length}
             icon={<CancelIcon />}
             bgColor={'error.light'}
             color={'error.main'}
@@ -64,10 +92,7 @@ const ConsultationsContainer = () => {
         </Grid>
       </Grid>
       <Stack>
-        <Typography sx={{ color: 'text.primary' }}>
-          Próximas consultas{' '}
-        </Typography>
-        tabela
+        <TableConsultation appointments={appointments} />
       </Stack>
     </Box>
   );

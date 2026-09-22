@@ -12,6 +12,9 @@ import {
   Paper,
   Stack,
   Divider,
+  InputLabel,
+  FormControl,
+  NativeSelect,
 } from '@mui/material';
 import Input from '@/components/ui/Input/Input';
 import OutlineButton from '@/components/ui/Buttons/OutlineButton/OutlineButton';
@@ -88,12 +91,13 @@ const AddConsultation = () => {
                   sx={{
                     fontSize: '14px',
                     fontWeight: 600,
-                    color: 'primary.main',
+                    color: 'text.main',
                     mb: 0.5,
                   }}
                 >
                   Paciente
                   <Box component="span" sx={{ color: 'error.main' }}>
+                    {' '}
                     *
                   </Box>
                 </Typography>
@@ -115,7 +119,7 @@ const AddConsultation = () => {
                   )}
                 />
               </Box>
-              <Box sx={{ display: 'flex', gap: 2 }}>
+              <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                 <Input
                   {...register('date', {
                     required: 'Data é obrigatório',
@@ -134,15 +138,49 @@ const AddConsultation = () => {
                   required
                 />
               </Box>
-              <Input
-                {...register('procedure', {
-                  required: 'Procedimento é obrigatório',
-                })}
-                label="Procedimento"
-                type="text"
-                required
-                placeholder={'Ex: consulta clínica geral'}
-              />
+              <Box sx={{ display: 'flex', gap: 2 }}>
+                <Box sx={{ width: '100%' }}>
+                  <Input
+                    {...register('procedure', {
+                      required: 'Procedimento é obrigatório',
+                    })}
+                    label="Procedimento"
+                    type="text"
+                    required
+                    placeholder={'Ex: consulta clínica geral'}
+                  />
+                </Box>
+
+                <Box sx={{ width: '100%' }}>
+                  <FormControl fullWidth>
+                    <Typography
+                      sx={{
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: 'text.main',
+                        mb: 0.5,
+                      }}
+                    >
+                      Status
+                      <Box component="span" sx={{ color: 'error.main' }}>
+                        {' '}
+                        *
+                      </Box>
+                    </Typography>
+                    <NativeSelect
+                      defaultValue={'agendada'}
+                      {...register('status', {
+                        required: 'Status é obrigatório',
+                      })}
+                    >
+                      <option value={'agendada'}>Agendada</option>
+                      <option value={'confirmada'}>Confirmada</option>
+                      <option value={'concluida'}>Concluída</option>
+                      <option value={'cancelada'}>Cancelada</option>
+                    </NativeSelect>
+                  </FormControl>
+                </Box>
+              </Box>
 
               <TextArea
                 {...register('observations')}
@@ -152,6 +190,7 @@ const AddConsultation = () => {
                 // error={!!errors.observations}
                 // helperText={errors.observations?.message}
               />
+
               <Box
                 sx={{
                   display: 'flex',

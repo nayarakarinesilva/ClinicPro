@@ -45,8 +45,8 @@ export const usePatients = () => {
       email: data.email,
       text_notes: data.text_notes,
       createdAt: new Date().toISOString(),
-      medicalRecord: [],
-      appointments: [],
+      // medicalRecord: [],
+      // appointments: [],
     };
     
     /*

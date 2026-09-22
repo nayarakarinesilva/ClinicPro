@@ -24,16 +24,20 @@ export const theme = createTheme({
       active: '#DCFCE7',
     },
     error: {
-      main: '#F54336',
+      main: '#e43e33',
       light: '#FDE4E1',
     },
     success: {
-      main: '#47B881',
+      main: '#3ca874',
       light: '#E3F5EC',
     },
     warning: {
       main: '#E67E22',
       light: '#FDF0E6',
+    },
+    lilac: {
+      main: '#7C3AED',
+      light: '#e9d8fc',
     },
     button: {
       primary: '#004AC6',

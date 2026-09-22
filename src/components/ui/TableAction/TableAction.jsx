@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import Link from 'next/link';
 
-const TableActionIcon = ({ patient }) => {
+const TableAction = ({ patient }) => {
   return (
     <>
       <Tooltip title="Visualizar paciente">
@@ -74,4 +74,4 @@ const TableActionIcon = ({ patient }) => {
   );
 };
 
-export default TableActionIcon;
+export default TableAction;
