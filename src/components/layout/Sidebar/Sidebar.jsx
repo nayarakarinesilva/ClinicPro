@@ -35,6 +35,12 @@ const Sidebar = () => {
         onClick={() => handleNavigate('/painel')}
       />
       <SidebarItem
+        icon={InsertInvitationOutlinedIcon}
+        text={'Consultas'}
+        active={pathname === '/consulta'}
+        onClick={() => handleNavigate('/consulta')}
+      />
+      <SidebarItem
         icon={PermIdentityOutlinedIcon}
         text={'Pacientes'}
         active={pathname === '/pacientes'}
@@ -45,12 +51,6 @@ const Sidebar = () => {
         text={"Médicos"}
         onClick={() => handleNavigate("/doctors")}
       /> */}
-      <SidebarItem
-        icon={InsertInvitationOutlinedIcon}
-        text={'Consultas'}
-        active={pathname === '/consulta'}
-        onClick={() => handleNavigate('/consulta')}
-      />
     </Box>
   );
 };

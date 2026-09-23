@@ -25,8 +25,6 @@ const TableConsultation = ({ appointments }) => {
     a.time.localeCompare(b.time)
   );
 
-  console.log('sortedAppointments', sortedAppointments);
-
   const styleStatus = {
     concluida: (
       <Chip
@@ -130,11 +128,7 @@ const TableConsultation = ({ appointments }) => {
                 <TableCell>
                   {/* Botões de ações na tabela */}
                   <Box sx={{ display: 'flex', gap: 1, cursor: 'pointer' }}>
-                    <TableAction
-                      viewHref={`/consulta/${patient.id}/detalhes`}
-                      editHref={`/consulta/${patient.id}/editar`}
-                      deleteHref={`/consulta/${patient.id}/deletar`}
-                    />
+                    <TableAction editHref={`/consulta/${patient.id}/editar`} />
                   </Box>
                 </TableCell>
               </TableRow>

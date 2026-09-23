@@ -8,26 +8,28 @@ import Link from 'next/link';
 const TableAction = ({ viewHref, editHref, deleteHref }) => {
   return (
     <>
-      <Tooltip title="Visualizar paciente">
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 1,
-            borderRadius: 1,
-            cursor: 'pointer',
-            '&:hover': {
-              backgroundColor: 'border.default',
-            },
-          }}
-        >
-          <Link href={viewHref}>
-            <RemoveRedEyeIcon sx={{ color: 'text.muted' }} />
-          </Link>
-        </Box>
-      </Tooltip>
-      <Tooltip title="Editar paciente">
+      {viewHref && (
+        <Tooltip title="Visualizar">
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 1,
+              borderRadius: 1,
+              cursor: 'pointer',
+              '&:hover': {
+                backgroundColor: 'border.default',
+              },
+            }}
+          >
+            <Link href={viewHref}>
+              <RemoveRedEyeIcon sx={{ color: 'text.muted' }} />
+            </Link>
+          </Box>
+        </Tooltip>
+      )}
+      <Tooltip title="Editar">
         <Box
           sx={{
             display: 'flex',
@@ -51,25 +53,27 @@ const TableAction = ({ viewHref, editHref, deleteHref }) => {
           </Link>
         </Box>
       </Tooltip>
-      <Tooltip title="Deletar paciente">
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 1,
-            borderRadius: 1,
-            cursor: 'pointer',
-            '&:hover': {
-              backgroundColor: 'border.default',
-            },
-          }}
-        >
-          <Link href={deleteHref}>
-            <DeleteIcon sx={{ color: 'text.muted' }} />
-          </Link>
-        </Box>
-      </Tooltip>
+      {deleteHref && (
+        <Tooltip title="Deletar">
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 1,
+              borderRadius: 1,
+              cursor: 'pointer',
+              '&:hover': {
+                backgroundColor: 'border.default',
+              },
+            }}
+          >
+            <Link href={deleteHref}>
+              <DeleteIcon sx={{ color: 'text.muted' }} />
+            </Link>
+          </Box>
+        </Tooltip>
+      )}
     </>
   );
 };

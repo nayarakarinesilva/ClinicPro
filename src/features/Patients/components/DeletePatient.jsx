@@ -7,8 +7,8 @@ import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
 import CustomTitle from '@/components/ui/CustomTitle/CustomTitle';
 import LinkButton from '@/components/ui/Buttons/LinkButton/LinkButton';
 import CustomModal from '@/components/ui/CustomModal/CustomModal';
-import { usePatients } from '../../hooks/usePatients';
-import { usePatient } from '../../hooks/usePatient';
+import { usePatients } from '../hooks/usePatients';
+import { usePatient } from '../hooks/usePatient';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const DeletePatient = () => {

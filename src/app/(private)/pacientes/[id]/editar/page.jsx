@@ -1,4 +1,4 @@
-import EditPatients from '@/features/Patients/components/EditPatients/EditPatients'
+import EditPatients from '@/features/Patients/components/EditPatients'
 import React from 'react'
 
 const page = () => {

@@ -3,8 +3,8 @@ import { Box } from '@mui/material';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import InfoCard from '../../../../components/ui/InfoCard/InfoCard';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
+import InfoCard from '@/components/ui/InfoCard/InfoCard';
 
 const DashboardStats = () => {
   const listPatients = usePatientsStore((state) => state.patientsList);

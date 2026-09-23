@@ -1,6 +1,6 @@
 
 import Title from '@/components/ui/Title/Title';
-import PatientsList from '@/features/Patients/components/PatientsList/PatientsList';
+import PatientsContainer from '@/features/Patients/PatientsContainer';
 import { Box, Stack } from '@mui/material';
 
 export default function Pacientes() {
@@ -19,7 +19,7 @@ export default function Pacientes() {
           <Title>Pacientes</Title>
         </Box>
       </Stack>
-      <PatientsList />
+      <PatientsContainer />
     </Box>
   );
 }

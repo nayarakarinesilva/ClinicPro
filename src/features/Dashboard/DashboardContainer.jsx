@@ -3,9 +3,9 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 import Title from '@/components/ui/Title/Title';
-import RecentPatients from '../RecentPatients/RecentPatients';
-import NextAppointments from '../NextAppointments/NextAppointments';
-import DashboardStats from '../DashboardStats/DashboardStats';
+import RecentPatients from './components/RecentPatients';
+import DashboardStats from './components/DashboardStats';
+import DashboardCalendarDay from './components/DashboardCalendarDay';
 
 const DashboardContainer = () => {
   return (
@@ -33,7 +33,7 @@ const DashboardContainer = () => {
           <RecentPatients />
         </Grid>
         <Grid size={5}>
-          <NextAppointments />
+          <DashboardCalendarDay />
         </Grid>
       </Grid>
     </Box>

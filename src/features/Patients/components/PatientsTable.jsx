@@ -32,6 +32,9 @@ const PatientsTable = ({ patients }) => {
                   fontWeight: 600,
                   backgroundColor: 'background.light',
                 },
+                '& .MuiTableCell-root': {
+                  color: 'text.muted',
+                },
               }}
             >
               {/* <TableCell>ID</TableCell> */}
@@ -50,6 +53,9 @@ const PatientsTable = ({ patients }) => {
                 role="checkbox"
                 sx={{
                   backgroundColor: 'background.default',
+                  '& .MuiTableCell-root': {
+                    color: 'text.secondary',
+                  },
                 }}
               >
                 <TableCell>{patient.name}</TableCell>

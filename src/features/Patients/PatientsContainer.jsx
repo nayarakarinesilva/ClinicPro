@@ -12,9 +12,10 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
-import PatientsTable from '@/features/Patients/components/PatientsTable/PatientsTable';
+import PatientsTable from '@/features/Patients/components/PatientsTable';
+import { getPagination } from '@/helpers/paginationHelper';
 
-const PatientsList = () => {
+const PatientsContainer = () => {
   // Guarda qual página está selecionada
   const [page, setPage] = useState(1);
 
@@ -32,18 +33,15 @@ const PatientsList = () => {
     patient.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Calcula quantas páginas serão necessárias
-  const totalPages = Math.ceil(filteredPatients.length / patientsPerPage);
-
-  // Define onde começa e termina a lista da página atual
-  const start = (page - 1) * patientsPerPage;
-  const end = start + patientsPerPage;
-
-  // Pega somente os pacientes que serão exibidos na página atual
-  const patientsPaginated = filteredPatients.slice(start, end);
+  //Função de paginação
+  const { paginatedItems, totalPages } = getPagination(
+    filteredPatients,
+    page,
+    patientsPerPage
+  );
 
   return (
-    <Stack sx={{ pt: 2, width: '100%', maxWidth: '900px' }}>
+    <Stack sx={{ padding: 2, maxWidth: 1200, width: '100%' }}>
       <Box
         sx={{
           display: 'flex',
@@ -83,7 +81,7 @@ const PatientsList = () => {
       <Box sx={{ height: '400px' }}>
         {/* Mostra a tabela ou mensagem quando não encontrar pacientes */}
         {filteredPatients.length > 0 ? (
-          <PatientsTable patients={patientsPaginated} />
+          <PatientsTable patients={paginatedItems} />
         ) : (
           <Box>
             <Typography>Nenhum paciente encontrado</Typography>
@@ -118,4 +116,4 @@ const PatientsList = () => {
   );
 };
 
-export default PatientsList;
+export default PatientsContainer;
