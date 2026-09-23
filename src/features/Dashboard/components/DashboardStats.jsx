@@ -5,19 +5,30 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
 import InfoCard from '@/components/ui/InfoCard/InfoCard';
+import { getAllAppointments } from '@/helpers/getAllAppointments';
 
 const DashboardStats = () => {
   const listPatients = usePatientsStore((state) => state.patientsList);
 
   const totasPatients = listPatients?.length;
-  const totalConsultations = listPatients.reduce(
-    (total, patient) => total + (patient.medicalRecord?.length || 0),
-    0
+
+  const appointments = getAllAppointments(listPatients);
+  const today = new Date();
+
+  const appointmentsToday = appointments.filter(
+    (item) => item.date === today.toISOString().split('T')[0]
   );
 
-  const patientsWithRecords = listPatients.filter(
-    (patient) => patient.medicalRecord?.length > 0
-  ).length;
+  const recentPatients = listPatients
+    .filter((patient) => {
+      const createdAt = new Date(patient.createdAt);
+      return (
+        createdAt.getMonth() === today.getMonth() &&
+        createdAt.getFullYear() === today.getFullYear()
+      );
+    })
+    .sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0))
+    .slice(0, 5);
 
   return (
     <>
@@ -34,10 +45,10 @@ const DashboardStats = () => {
 
       <Box sx={{ flex: 1 }}>
         <InfoCard
-          title={'Consultas realizadas'}
-          subtitle={'registradas no prontuário'}
-          value={totalConsultations}
-          icon={<PersonAddIcon />}
+          title="Consultas agendadas"
+          subtitle="próximos atendimentos"
+          value={appointmentsToday.length}
+          icon={<AssignmentIcon />}
           bgColor={'background.active'}
           color={'success.main'}
         />
@@ -45,10 +56,10 @@ const DashboardStats = () => {
 
       <Box sx={{ flex: 1 }}>
         <InfoCard
-          title={'Em acompanhamento'}
-          subtitle={'com registros no prontuário'}
-          value={patientsWithRecords}
-          icon={<AssignmentIcon />}
+          title={'Novos pacientes'}
+          subtitle={'cadastrados este mês'}
+          value={recentPatients.length}
+          icon={<PersonAddIcon />}
           bgColor={'warning.light'}
           color={'warning.main'}
         />

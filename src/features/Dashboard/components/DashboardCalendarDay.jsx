@@ -1,18 +1,10 @@
-import { Box, Typography, Paper } from '@mui/material';
-import React, { useState } from 'react';
-
-import { StandaloneDayView } from '@mui/x-scheduler/day-view';
-
-import { ptBR as dateFnsPtBR } from 'date-fns/locale/pt-BR';
-import { ptBR as schedulerPtBR } from '@mui/x-scheduler/locales';
-
-import { resources } from '../data/calendarEvents';
+import { Box, Typography, Paper, Divider } from '@mui/material';
+import React from 'react';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
 import { getAllAppointments } from '@/helpers/getAllAppointments';
 import StatusChip from '@/components/ui/StatusChip/StatusChip';
 
 const DashboardCalendarDay = () => {
-  // const [events, setEvents] = useState(calendarEvents);
   const listPatients = usePatientsStore((state) => state.patientsList);
 
   const appointments = getAllAppointments(listPatients);
@@ -23,8 +15,10 @@ const DashboardCalendarDay = () => {
     (item) => item.date === today.toISOString().split('T')[0]
   );
 
-  // console.log('listPatients', listPatients);
-  console.log('appointmentsToday', appointmentsToday);
+  const sortedAppointments = appointmentsToday.sort((a, b) =>
+    a.time.localeCompare(b.time)
+  );
+
   return (
     <Paper
       variant="outlined"
@@ -44,21 +38,41 @@ const DashboardCalendarDay = () => {
         <Typography sx={{ fontWeight: 600, color: 'text.secondary' }}>
           Próximos Atendimentos
         </Typography>
+        <Divider sx={{ mt: 1 }} />
+        {sortedAppointments.length > 0 ? (
+          <Box
+            sx={{
+              maxHeight: '430px',
+              overflow: 'auto',
+              mt: 1,
+            }}
+          >
+            {sortedAppointments.map((appointment) => (
+              <Box
+                key={appointment.id}
+                sx={{
+                  p: 1,
+                }}
+              >
+                <Box sx={{ display: 'flex', gap: 1, p: 1 }}>
+                  <Box>
+                    <Typography>{appointment.time} -</Typography>
+                  </Box>
+                  <Box>
+                    <Typography>{appointment.patientName}</Typography>
 
-        <Box>
-          {appointmentsToday.map((appointment) => (
-            <Box key={appointment.id} sx={{ display: 'flex', gap: 1 }}>
-              <Box>
-                <Typography>{appointment.time} -</Typography>
+                    <StatusChip status={appointment.status} />
+                  </Box>
+                </Box>
+                <Divider sx={{ mt: 1 }} />
               </Box>
-              <Box>
-                <Typography>{appointment.patientName}</Typography>
-
-                <StatusChip status={appointment.status} />
-              </Box>
-            </Box>
-          ))}
-        </Box>
+            ))}
+          </Box>
+        ) : (
+          <Box>
+            <Typography>Não há pacientes agendados para hoje</Typography>
+          </Box>
+        )}
       </Box>
     </Paper>
   );

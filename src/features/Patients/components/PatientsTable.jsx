@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import TableAction from '@/components/ui/TableAction/TableAction';
 import { formatedDate } from '@/helpers/dateHelper';
+import { formatPhone } from '@/helpers/userHelper';
 
 const PatientsTable = ({ patients }) => {
   return (
@@ -59,7 +60,7 @@ const PatientsTable = ({ patients }) => {
                 }}
               >
                 <TableCell>{patient.name}</TableCell>
-                <TableCell>{patient.phone}</TableCell>
+                <TableCell>{formatPhone(patient.phone)}</TableCell>
                 <TableCell>{formatedDate(patient.date_birth)}</TableCell>
                 <TableCell>
                   {/* Botões de ações na tabela */}

@@ -9,10 +9,10 @@ import {
   TableRow,
   TableBody,
   Typography,
-  Chip,
 } from '@mui/material';
 import { formatedDate } from '@/helpers/dateHelper';
 import TableAction from '@/components/ui/TableAction/TableAction';
+import StatusChip from '@/components/ui/StatusChip/StatusChip';
 
 const TableConsultation = ({ appointments }) => {
   const today = new Date().toISOString().split('T')[0];
@@ -25,54 +25,11 @@ const TableConsultation = ({ appointments }) => {
     a.time.localeCompare(b.time)
   );
 
-  const styleStatus = {
-    concluida: (
-      <Chip
-        label="Concluída"
-        sx={{
-          backgroundColor: 'success.light',
-          color: 'success.main',
-          fontWeight: 600,
-        }}
-      />
-    ),
-    confirmada: (
-      <Chip
-        label="Confirmada"
-        sx={{
-          backgroundColor: 'lilac.light',
-          color: 'lilac.main',
-          fontWeight: 600,
-        }}
-      />
-    ),
-    agendada: (
-      <Chip
-        label="Agendada"
-        sx={{
-          backgroundColor: 'background.primary',
-          color: 'button.primary',
-          fontWeight: 600,
-        }}
-      />
-    ),
-    cancelada: (
-      <Chip
-        label="Cancelada"
-        sx={{
-          backgroundColor: 'error.light',
-          color: 'error.main',
-          fontWeight: 600,
-        }}
-      />
-    ),
-  };
-
   return (
     <Box>
       <Box sx={{ mt: 2, mb: 1 }}>
         <Typography
-          sx={{ color: 'text.primary', fontWeight: 600, fontSize: '18px' }}
+          sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '18px' }}
         >
           Próximas consultas
         </Typography>
@@ -123,7 +80,7 @@ const TableConsultation = ({ appointments }) => {
                 <TableCell>{patient.time}h</TableCell>
                 <TableCell>{patient.patientName}</TableCell>
                 <TableCell>
-                  {styleStatus[patient.status] || patient.status}
+                  <StatusChip status={patient.status} />
                 </TableCell>
                 <TableCell>
                   {/* Botões de ações na tabela */}

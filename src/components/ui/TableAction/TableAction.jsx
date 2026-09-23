@@ -16,15 +16,24 @@ const TableAction = ({ viewHref, editHref, deleteHref }) => {
               alignItems: 'center',
               justifyContent: 'center',
               padding: 1,
-              borderRadius: 1,
+              borderRadius: '50%',
               cursor: 'pointer',
-              '&:hover': {
-                backgroundColor: 'border.default',
-              },
+              backgroundColor: 'lilac.light',
+              width: 35,
+              height: 35,
             }}
           >
-            <Link href={viewHref}>
-              <RemoveRedEyeIcon sx={{ color: 'text.muted' }} />
+            <Link
+              href={viewHref}
+              style={{
+                display: 'flex',
+                width: '100%',
+                height: '100%',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <RemoveRedEyeIcon sx={{ color: 'lilac.main' }} />
             </Link>
           </Box>
         </Tooltip>
@@ -36,18 +45,27 @@ const TableAction = ({ viewHref, editHref, deleteHref }) => {
             alignItems: 'center',
             justifyContent: 'center',
             padding: 1,
-            borderRadius: 1,
+            borderRadius: '50%',
             cursor: 'pointer',
-            '&:hover': {
-              backgroundColor: 'border.default',
-            },
+            backgroundColor: 'background.primary',
+            width: 35,
+            height: 35,
           }}
         >
-          <Link href={editHref}>
+          <Link
+            href={editHref}
+            style={{
+              display: 'flex',
+              width: '100%',
+              height: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
             <EditIcon
               sx={{
                 cursor: 'pointer',
-                color: 'text.muted',
+                color: 'button.primary',
               }}
             />
           </Link>
@@ -61,15 +79,24 @@ const TableAction = ({ viewHref, editHref, deleteHref }) => {
               alignItems: 'center',
               justifyContent: 'center',
               padding: 1,
-              borderRadius: 1,
+              borderRadius: '50%',
               cursor: 'pointer',
-              '&:hover': {
-                backgroundColor: 'border.default',
-              },
+              backgroundColor: 'error.light',
+              width: 35,
+              height: 35,
             }}
           >
-            <Link href={deleteHref}>
-              <DeleteIcon sx={{ color: 'text.muted' }} />
+            <Link
+              href={deleteHref}
+              style={{
+                display: 'flex',
+                width: '100%',
+                height: '100%',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <DeleteIcon fontSize="medium" sx={{ color: 'error.main' }} />
             </Link>
           </Box>
         </Tooltip>

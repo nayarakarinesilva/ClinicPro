@@ -41,7 +41,7 @@ const PatientsContainer = () => {
   );
 
   return (
-    <Stack sx={{ padding: 2, maxWidth: 1200, width: '100%' }}>
+    <Stack sx={{ maxWidth: 1200, width: '100%' }}>
       <Box
         sx={{
           display: 'flex',
