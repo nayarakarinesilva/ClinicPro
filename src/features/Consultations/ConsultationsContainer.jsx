@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { Box, Grid, Stack, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Grid, Pagination, Stack, Typography } from '@mui/material';
 import Title from '@/components/ui/Title/Title';
 import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
 import InfoCard from '@/components/ui/InfoCard/InfoCard';
@@ -10,36 +10,40 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
 import TableConsultation from './components/TableConsultation';
+import { getPagination } from '@/helpers/paginationHelper';
+import { getAllAppointments } from '@/helpers/getAllAppointments';
 
 const ConsultationsContainer = () => {
+  // Guarda qual página está selecionada
+  const [page, setPage] = useState(1);
+
   const listPatients = usePatientsStore((state) => state.patientsList);
 
   const today = new Date().toISOString().split('T')[0];
 
-  //Pegue as consultas + nome → depois junte todas as consultas em uma única lista
-  const appointments = listPatients
-    .map((patient) => {
-      const patientAppointments = patient.appointments || [];
-      return patientAppointments.map((appointment) => ({
-        ...appointment,
-        patientName: patient.name,
-      }));
-    })
-    .flat();
+  //Função Pegue as consultas
+  const appointments = getAllAppointments(listPatients);
 
   const appointmentsToday = appointments.filter((item) => item.date === today);
-  const appointmentsCanceled = appointments.filter(
+  const appointmentsCanceled = appointmentsToday.filter(
     (item) => item.status === 'cancelada' || 0
   );
-  const appointmentsCompleted = appointments.filter(
+  const appointmentsCompleted = appointmentsToday.filter(
     (item) => item.status === 'concluida' || 0
   );
 
-  // console.log('==Consultas', appointments);
-  console.log('==Consultas hoje', appointmentsToday);
-  // console.log('==today', today);
+  // Define quantos pacientes aparecem em cada página
+  const consultationsPerPage = 5;
+
+  //Função de paginação
+  const { paginatedItems, totalPages } = getPagination(
+    appointmentsToday,
+    page,
+    consultationsPerPage
+  );
+
   return (
-    <Box sx={{ padding: 2 }}>
+    <Box sx={{ padding: 2, maxWidth: 1200, width: '100%' }}>
       <Stack
         spacing={1}
         sx={{
@@ -92,7 +96,36 @@ const ConsultationsContainer = () => {
         </Grid>
       </Grid>
       <Stack>
-        <TableConsultation appointments={appointmentsToday} />
+        {paginatedItems.length > 0 ? (
+          <TableConsultation appointments={paginatedItems} />
+        ) : (
+          <Box>
+            <Typography>Não há consultas agendadas</Typography>
+          </Box>
+        )}
+
+        {totalPages > 0 && (
+          <Box
+            sx={{
+              mt: 8,
+              display: 'flex',
+              justifyContent: 'flex-end',
+            }}
+          >
+            <Pagination
+              count={totalPages}
+              page={page}
+              // Atualiza a página quando o usuário clica em outra página
+              onChange={(_, value) => setPage(value)}
+              sx={{
+                '& .MuiPaginationItem-root.Mui-selected': {
+                  backgroundColor: 'primary.main',
+                  color: 'white',
+                },
+              }}
+            />
+          </Box>
+        )}
       </Stack>
     </Box>
   );

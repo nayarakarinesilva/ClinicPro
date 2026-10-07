@@ -28,6 +28,7 @@ const EditConsultation = () => {
   const [value, setValue] = React.useState(null);
   const { id } = useParams();
   const consultationId = Number(id);
+
   const { handleEditConsultation, register, handleSubmit, reset, errors } =
     useConsultations();
   const initialized = useRef(false);
@@ -65,12 +66,6 @@ const EditConsultation = () => {
 
   const handleSubmitEdit = (data) => {
     if (!value) return;
-
-    console.log('VAI EDITAR:', {
-      patientId: value.id,
-      consultationId,
-      data,
-    });
 
     handleEditConsultation(value.id, consultationId, data);
   };
@@ -145,6 +140,7 @@ const EditConsultation = () => {
 
                 <Autocomplete
                   fullWidth
+                  required
                   value={value}
                   onChange={(event, newValue) => {
                     setValue(newValue);
@@ -169,6 +165,8 @@ const EditConsultation = () => {
                   type="date"
                   required
                   placeholder={'00/00/0000'}
+                  error={!!errors.date}
+                  helperText={errors.date?.message}
                 />
                 <Input
                   {...register('time', {
@@ -177,6 +175,8 @@ const EditConsultation = () => {
                   label="Hora"
                   type="time"
                   required
+                  error={!!errors.time}
+                  helperText={errors.time?.message}
                 />
               </Box>
               <Box sx={{ display: 'flex', gap: 2 }}>
@@ -189,6 +189,8 @@ const EditConsultation = () => {
                     type="text"
                     required
                     placeholder={'Ex: consulta clínica geral'}
+                    error={!!errors.procedure}
+                    helperText={errors.procedure?.message}
                   />
                 </Box>
 
@@ -212,6 +214,7 @@ const EditConsultation = () => {
                       {...register('status', {
                         required: 'Status é obrigatório',
                       })}
+                      error={!!errors.status}
                     >
                       <option value="agendada">Agendada</option>
                       <option value="confirmada">Confirmada</option>
@@ -219,6 +222,17 @@ const EditConsultation = () => {
                       <option value="cancelada">Cancelada</option>
                     </NativeSelect>
                   </FormControl>
+                  {errors.status && (
+                    <Typography
+                      sx={{
+                        color: 'error.main',
+                        fontSize: '12px',
+                        mt: 0.5,
+                      }}
+                    >
+                      {errors.status.message}
+                    </Typography>
+                  )}
                 </Box>
               </Box>
               <TextArea
@@ -226,8 +240,6 @@ const EditConsultation = () => {
                 label={'Observações'}
                 type={'text'}
                 placeholder={'Anotações clínicas...'}
-                // error={!!errors.observations}
-                // helperText={errors.observations?.message}
               />
 
               <Box
@@ -244,7 +256,7 @@ const EditConsultation = () => {
                 <OutlineButton type="button" onClick={handleClose}>
                   Cancelar
                 </OutlineButton>
-                <CustomButton type="submit">Salvar alterações</CustomButton>
+                <CustomButton type="submit">Salvar</CustomButton>
               </Box>
             </Stack>
           </Box>

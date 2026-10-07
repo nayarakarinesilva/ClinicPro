@@ -5,8 +5,8 @@ import { Box, Stack } from '@mui/material';
 import { useRegister } from './hooks/useRegister';
 import Input from '@/components/ui/Input/Input';
 import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
-import TitleForm from '../components/TitleForm/TitleForm';
-import FormFooterLink from '../components/FormFooterLink/FormFooterLink';
+import TitleForm from '../components/TitleForm';
+import FormFooterLink from '../components/FormFooterLink';
 
 export default function RegisterForm() {
   const { register, handleSubmit, handleRegister, errors } = useRegister();

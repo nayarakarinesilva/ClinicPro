@@ -27,7 +27,7 @@ const CustomButton = ({
         borderRadius: '8px',
         mt: 1,
         mb: 1,
-        minHeight: '40px',
+        minHeight: '45px',
       }}
     >
       {children}

@@ -5,8 +5,8 @@ import { Box, Stack } from '@mui/material';
 import Input from '@/components/ui/Input/Input';
 import CustomButton from '@/components/ui/Buttons/CustomButton/CustomButton';
 import { useLogin } from './hooks/useLogin';
-import TitleForm from '../components/TitleForm/TitleForm';
-import FormFooterLink from '../components/FormFooterLink/FormFooterLink';
+import TitleForm from '../components/TitleForm';
+import FormFooterLink from '../components/FormFooterLink';
 
 export default function LoginForm() {
   const { register, handleSubmit, handleLogin, errors } = useLogin();

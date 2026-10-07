@@ -12,7 +12,6 @@ import {
   Paper,
   Stack,
   Divider,
-  InputLabel,
   FormControl,
   NativeSelect,
 } from '@mui/material';
@@ -29,7 +28,6 @@ const AddConsultation = () => {
   const router = useRouter();
 
   const listPatients = usePatientsStore((state) => state.patientsList);
-  console.log('listPatients', listPatients);
 
   const { handleAddConsultation, register, handleSubmit, errors } =
     useConsultations({ patientId: value?.id });
@@ -187,8 +185,6 @@ const AddConsultation = () => {
                 label={'Observações'}
                 type={'text'}
                 placeholder={'Anotações clínicas...'}
-                // error={!!errors.observations}
-                // helperText={errors.observations?.message}
               />
 
               <Box

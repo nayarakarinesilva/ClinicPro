@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import AuthImage from '../AuthImage/AuthImage';
+import AuthImage from './AuthImage';
 
 const AuthLayout = ({ children }) => {
   return (

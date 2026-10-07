@@ -1,7 +1,7 @@
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
 import { useForm } from 'react-hook-form';
 
-export const useConsultations = () => {
+export const useConsultations = ({ patientId }) => {
   const {
     register,
     handleSubmit,

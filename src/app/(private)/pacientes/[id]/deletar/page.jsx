@@ -1,4 +1,4 @@
-import DeletePatient from '@/features/Patients/components/DeletePatient/DeletePatient';
+import DeletePatient from '@/features/Patients/components/DeletePatient';
 import React from 'react';
 
 const page = () => {
