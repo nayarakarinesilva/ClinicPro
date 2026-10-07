@@ -6,7 +6,7 @@ import RecentPatient from './RecentPatient';
 
 const RecentPatients = () => {
   const listPatients = usePatientsStore((state) => state.patientsList);
- 
+
   const recentPatients = [...listPatients]
     .sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0))
     .slice(0, 5);
@@ -45,9 +45,15 @@ const RecentPatients = () => {
       <Divider />
 
       <Box>
-        {recentPatients.map((patient) => (
-          <RecentPatient key={patient.id} patient={patient} />
-        ))}
+        {recentPatients.length > 0 ? (
+          recentPatients.map((patient) => (
+            <RecentPatient key={patient.id} patient={patient} />
+          ))
+        ) : (
+          <Box sx={{ padding: 1 }}>
+            <Typography>Nenhum paciente cadastrado recentemente</Typography>
+          </Box>
+        )}
       </Box>
     </Paper>
   );

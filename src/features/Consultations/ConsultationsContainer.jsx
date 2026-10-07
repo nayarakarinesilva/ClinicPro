@@ -99,7 +99,7 @@ const ConsultationsContainer = () => {
         {paginatedItems.length > 0 ? (
           <TableConsultation appointments={paginatedItems} />
         ) : (
-          <Box>
+          <Box sx={{ padding: 1 }}>
             <Typography>Não há consultas agendadas</Typography>
           </Box>
         )}

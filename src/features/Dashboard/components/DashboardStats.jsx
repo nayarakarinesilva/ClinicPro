@@ -31,13 +31,24 @@ const DashboardStats = () => {
     .slice(0, 5);
 
   return (
-    <>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', sm: 'row' },
+        width: '100%',
+        gap: 2,
+      }}
+    >
       <Box sx={{ flex: 1 }}>
         <InfoCard
           title={'Total de Pacientes'}
           subtitle={'cadastrados no sistema'}
           value={totasPatients}
-          icon={<PeopleAltIcon />}
+          icon={
+            <PeopleAltIcon
+              sx={{ fontSize: { xs: '1rem', md: '1.2rem', lg: '1.5rem' } }}
+            />
+          }
           bgColor={'background.secondary'}
           color={'primary.main'}
         />
@@ -48,7 +59,11 @@ const DashboardStats = () => {
           title="Consultas agendadas"
           subtitle="próximos atendimentos"
           value={appointmentsToday.length}
-          icon={<AssignmentIcon />}
+          icon={
+            <AssignmentIcon
+              sx={{ fontSize: { xs: '1rem', md: '1.2rem', lg: '1.5rem' } }}
+            />
+          }
           bgColor={'background.active'}
           color={'success.main'}
         />
@@ -59,12 +74,16 @@ const DashboardStats = () => {
           title={'Novos pacientes'}
           subtitle={'cadastrados este mês'}
           value={recentPatients.length}
-          icon={<PersonAddIcon />}
+          icon={
+            <PersonAddIcon
+              sx={{ fontSize: { xs: '1rem', md: '1.2rem', lg: '1.5rem' } }}
+            />
+          }
           bgColor={'warning.light'}
           color={'warning.main'}
         />
       </Box>
-    </>
+    </Box>
   );
 };
 

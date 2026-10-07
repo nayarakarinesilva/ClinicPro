@@ -69,7 +69,7 @@ const DashboardCalendarDay = () => {
             ))}
           </Box>
         ) : (
-          <Box>
+          <Box sx={{ padding: 1 }}>
             <Typography>Não há pacientes agendados para hoje</Typography>
           </Box>
         )}

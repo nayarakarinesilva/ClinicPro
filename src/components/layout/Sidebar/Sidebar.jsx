@@ -1,6 +1,6 @@
 'use client';
 
-import { Box } from '@mui/material';
+import { Box, Drawer, IconButton } from '@mui/material';
 import { usePathname, useRouter } from 'next/navigation';
 
 import SidebarHeader from './components/SidebarHeader';
@@ -10,6 +10,8 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
 import InsertInvitationOutlinedIcon from '@mui/icons-material/InsertInvitationOutlined';
+import { useState } from 'react';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Sidebar = () => {
   const router = useRouter();
@@ -19,11 +21,15 @@ const Sidebar = () => {
     router.push(route);
   };
 
-  return (
+  const [open, setOpen] = useState(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
+
+  const DrawerList = (
     <Box
       sx={{
-        borderRight: '1px solid',
-        borderColor: 'divider',
         padding: 1,
       }}
     >
@@ -52,6 +58,44 @@ const Sidebar = () => {
         onClick={() => handleNavigate("/doctors")}
       /> */}
     </Box>
+  );
+
+  return (
+    <>
+      <Box
+        sx={{
+          display: {
+            xs: 'block',
+            md: 'none',
+          },
+          height: 56,
+        }}
+      >
+        <IconButton onClick={toggleDrawer(true)}>
+          <MenuIcon />
+        </IconButton>
+      </Box>
+
+      <Drawer
+        open={open}
+        onClose={toggleDrawer(false)}
+        sx={{ display: { xs: 'block', md: 'none' } }}
+      >
+        {DrawerList}
+      </Drawer>
+      {/* Sidebar normal no desktop */}
+      <Box
+        sx={{
+          display: {
+            xs: 'none',
+            md: 'block',
+          },
+          padding: 1,
+        }}
+      >
+        {DrawerList}
+      </Box>
+    </>
   );
 };
 
