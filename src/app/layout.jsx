@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
               minHeight: '100vh',
               display: 'flex',
               flexDirection: 'column',
+              gap: 2,
             }}
           >
             <Box component="main" sx={{ flex: 1 }}>

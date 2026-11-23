@@ -1,7 +1,9 @@
 import { usePatientsStore } from '@/store/usePatientsStore/usePatientsStore';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-export const useConsultations = ({ patientId }) => {
+export const useConsultations = ({ patientId } = {}) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -21,12 +23,15 @@ export const useConsultations = ({ patientId }) => {
     alert('Consulta agendada com sucesso!');
     addConsultation(patientId, appointments);
     reset();
+    router.push('/consulta');
   };
 
   const handleEditConsultation = (patientId, consultationId, data) => {
     alert('Editado com sucesso!');
     editConsultation(patientId, consultationId, data);
+    router.push('/consulta');
   };
+
   return {
     handleAddConsultation,
     handleEditConsultation,
